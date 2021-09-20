@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DBmanager{
+public class DBManager{
 	private static final String USER_NAME = "pdc"; //your DB username
     private static final String PASSWORD = "pdc"; //your DB password
     private static final String URL = "jdbc:derby:BookStoreDB_Ebd; create=true";  //url of the DB host
