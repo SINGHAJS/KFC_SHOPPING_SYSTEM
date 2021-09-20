@@ -6,27 +6,25 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Ajit Singh
- * ID: 19070642
- * 
+ * @author Ajit Singh ID: 19070642
+ *
  */
-
-
 public class DBManager {
+
     private static final String USER_NAME = "kfc"; //DB username
     private static final String PASSWORD = "kfc"; //DB password
     private static final String URL = "jdbc:derby://localhost:1527/KFC_DB; create=true";  //url of the DB host
 
-     Connection conn;
-    
-    public DBManager(){
+    Connection conn;
+
+    public DBManager() {
         establishConnection();
     }
-    
+
     public Connection getConnection() {
         return this.conn;
     }
-    
+
     //Establish connection
     public void establishConnection() {
         if (this.conn == null) {
@@ -38,8 +36,8 @@ public class DBManager {
             }
         }
     }
-    
-      public void closeConnections() {
+
+    public void closeConnections() {
         if (conn != null) {
             try {
                 conn.close();
@@ -48,6 +46,5 @@ public class DBManager {
             }
         }
     }
-    
-    
+
 }
