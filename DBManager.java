@@ -13,12 +13,16 @@ public class DBManager {
 
     private static final String USER_NAME = "kfc"; //DB username
     private static final String PASSWORD = "kfc"; //DB password
-    private static final String URL = "jdbc:derby://localhost:1527/KFC_DB; create=true";  //url of the DB host
+    private static final String URL = "jdbc:derby:KFC_DB_Ebd; create=true";  //url of the DB host
 
     Connection conn;
 
     public DBManager() {
         establishConnection();
+    }
+     public static void main(String[] args) {
+        DBManager dbManager = new DBManager();
+        System.out.println(dbManager.getConnection());
     }
 
     public Connection getConnection() {
