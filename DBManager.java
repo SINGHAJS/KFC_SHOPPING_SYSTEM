@@ -1,26 +1,24 @@
 package KFC_SHOPPING_SYSTEM;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author Ajit Singh ID: 19070642
- *
- */
-public class DBManager {
-
-    private static final String USER_NAME = "kfc"; //DB username
-    private static final String PASSWORD = "kfc"; //DB password
-    private static final String URL = "jdbc:derby:KFC_DB_Ebd; create=true";  //url of the DB host
-
-    Connection conn;
+public class DBmanager{
+	private static final String USER_NAME = "pdc"; //your DB username
+    private static final String PASSWORD = "pdc"; //your DB password
+    private static final String URL = "jdbc:derby:BookStoreDB_Ebd; create=true";  //url of the DB host
+	
+	Connection conn;
 
     public DBManager() {
         establishConnection();
     }
-     public static void main(String[] args) {
+
+    public static void main(String[] args) {
         DBManager dbManager = new DBManager();
         System.out.println(dbManager.getConnection());
     }
@@ -31,14 +29,16 @@ public class DBManager {
 
     //Establish connection
     public void establishConnection() {
+        //Establish a connection to Database
         if (this.conn == null) {
             try {
                 conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-                System.out.println(URL + " CONNECTION SUCCESSFUL");
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
+            } catch (SQLException e) {
+                Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, e);
             }
+
         }
+
     }
 
     public void closeConnections() {
@@ -51,4 +51,34 @@ public class DBManager {
         }
     }
 
+    public ResultSet queryDB(String sql) {
+
+        Connection connection = this.conn;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return resultSet;
+    }
+
+    public void updateDB(String sql) {
+
+        Connection connection = this.conn;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 }
