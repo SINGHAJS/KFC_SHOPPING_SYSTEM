@@ -17,8 +17,7 @@ public class KFC_LoginPageModel extends Observable{
     KFC_LoginPageView view; 
     KFC_LoginPageController controller; 
     
-    public void KFC_LoginPageModel() {
-        System.out.println("[KFC MODEL]");
+    public void KFC_LoginPageModel() {       
     }
 //Customer Login----------------------------------------------------------------
     public void performCustomerLogin() {

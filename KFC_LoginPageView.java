@@ -18,7 +18,7 @@ public class KFC_LoginPageView implements Observer {
     protected JButton aRegistrationButton;
     protected JButton aFAQButton;
     protected JTextField aNameField;
-    protected JTextField aPassField;     
+    protected JTextField aPassField;         
     
     public KFC_LoginPageView() {
         System.out.println("[KFC VIEW]");
@@ -153,7 +153,7 @@ public class KFC_LoginPageView implements Observer {
         aFAQButton = new JButton("VIEW FAQ");
         aFAQButton.setBounds(300, 365 , 70, 20);
         aCenterPanel.add(aFAQButton);
-        
+               
 //------------------------------------------------------------------------------        
 
         // JFrame Default Settings

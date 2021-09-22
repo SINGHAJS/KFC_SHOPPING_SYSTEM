@@ -19,13 +19,13 @@ public class KFC_LoginPageController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("[CONTROLLER: ACTING ON MODEL]");
-        if (e.equals(view.aLoginButton)) {
+        if (e.getSource()==view.aLoginButton) {                 
             model.performCustomerLogin();
-        } else if (e.equals(view.aRegistrationButton)) {
+        } else if (e.getSource()==view.aRegistrationButton) {
             model.performCustomerRegistration();
-        } else if (e.equals(view.aManagerLoginButton)) {
+        } else if (e.getSource()==view.aManagerLoginButton) {
             model.performManagerLogin();
-        } else if (e.equals(view.aFAQButton)) {
+        } else if (e.getSource()==view.aFAQButton) {
             model.viewFAQ();
         }
     }
