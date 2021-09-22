@@ -7,78 +7,63 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DBManager{
-	private static final String USER_NAME = "pdc"; //your DB username
-    private static final String PASSWORD = "pdc"; //your DB password
-    private static final String URL = "jdbc:derby:BookStoreDB_Ebd; create=true";  //url of the DB host
-	
-	Connection conn;
-
-    public DBManager() {
-        establishConnection();
-    }
-
-    public static void main(String[] args) {
-        DBManager dbManager = new DBManager();
-        System.out.println(dbManager.getConnection());
-    }
-
-    public Connection getConnection() {
+/**
+ *
+ * @author Ajit Singh ID: 19070642
+ * @author Rohit Singh ID: 17981754
+ */
+public class DBManager {
+    private static final String USER_NAME = "pdc";
+    private static final String PASSWORD = "pdc";
+    
+    private Connection conn;
+     public Connection getConnection() {
         return this.conn;
     }
-
-    //Establish connection
-    public void establishConnection() {
-        //Establish a connection to Database
-        if (this.conn == null) {
+    
+    public DBManager(String URL){
+        establishConnection(URL);
+    }
+    
+    private void establishConnection(String URL){
+        if(this.conn == null){
             try {
-                conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-            } catch (SQLException e) {
+                conn = DriverManager.getConnection(URL,USER_NAME,PASSWORD);
+                
+            } catch (SQLException e){
                 Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, e);
+                //add error message
             }
-
         }
-
     }
-
-    public void closeConnections() {
-        if (conn != null) {
-            try {
+    
+    public void closeConnections(){
+        if(conn!= null){
+            try{
                 conn.close();
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
+            }catch (SQLException ex){
+                //display error
             }
         }
     }
-
-    public ResultSet queryDB(String sql) {
-
-        Connection connection = this.conn;
-        Statement statement = null;
-        ResultSet resultSet = null;
-
+    
+    public boolean dropTable(String name) {
+        boolean check = false;
         try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(sql);
-
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            Statement statement = this.conn.createStatement(); 
+            ResultSet resultset = this.conn.getMetaData().getTables(null, null, "%", null);
+            while (resultset.next()) {
+                String dbName = resultset.getString(3);
+                if (dbName.equalsIgnoreCase(name)) {
+                    check = true;
+                    String sql = "DROP TABLE " + name;
+                    statement.executeUpdate(sql);
+                    System.out.println("Removing existing DB");
+                }
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, e);
         }
-        return resultSet;
-    }
-
-    public void updateDB(String sql) {
-
-        Connection connection = this.conn;
-        Statement statement = null;
-        ResultSet resultSet = null;
-
-        try {
-            statement = connection.createStatement();
-            statement.executeUpdate(sql);
-
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+        return check;
     }
 }
