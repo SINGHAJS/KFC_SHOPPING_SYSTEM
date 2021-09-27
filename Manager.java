@@ -62,7 +62,7 @@ public class Manager extends KFCMenuOptions {
                     System.exit(0);
                 } else if (iName.equalsIgnoreCase("0")) {
                     Iloop = false;
-                } else if (!iName.isBlank()) {
+                } else if (!iName.isEmpty()) {
                     while (lloop) {
                         System.out.println("______________________________________________________________________");
                         System.out.println("ENTER ITEM PRICE");
