@@ -33,7 +33,7 @@ public class LoginPageModel extends Observable {
 
     public void performCustomerLogin() {
         DBM = new DBManager(URL);
-        //DBM.createCustomerTable(aCustomerTable);
+        DBM.createCustomerTable(aCustomerTable);
         view = new LoginPageView();
         verifyCustomerLogin(view);
     }
