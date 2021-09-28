@@ -85,23 +85,4 @@ public class DBManager {
         }
     }
     
-    
-    public void createCustomerTable(String tableName) {
-        String createCustomerTable = "CREATE  TABLE " + tableName
-                + " (USERNAME VARCHAR(50) NOT NULL, PASSWORD VARCHAR(50) NOT NULL, "
-                + "EMAIL VARCHAR(50), ADDRESS VARCHAR(100) NOT NULL)";
-        String insertCustomerTableValues = "INSERT INTO " + tableName
-                + " VALUES ('pdc', 'Password12345', 'pdc@pdcProjects.com', "
-                + "'123 Street Auckland New Zealand')";
-
-        try {
-            dropTable(tableName);
-            this.statement = getConnection().createStatement();
-            statement.executeUpdate(createCustomerTable);
-            statement.executeUpdate(insertCustomerTableValues);
-            System.out.println("[NEW " + tableName + " TABLE CREATED]");
-        } catch (SQLException ex) {
-            System.out.println("[ERROR: " + ex + "]");
-        }
-    }
 }
