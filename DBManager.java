@@ -22,9 +22,17 @@ public class DBManager {
      public Connection getConnection() {
         return this.conn;
     }
+    public Statement getStatement(){
+        try{
+        this.statement = this.conn.createStatement();
+        }catch (SQLException e){
+            System.out.println("hi");
+        }
+        return this.statement;
+    }
 
     public DBManager(String URL){
-        establishConnection(URL);
+        this.establishConnection(URL);
     }
     
     private void establishConnection(String URL){
@@ -34,7 +42,7 @@ public class DBManager {
                 
             } catch (SQLException e){
                 System.out.println("hi");
-                Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, e);
+               // Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, e);
                 //add error message
             }
         }
@@ -67,7 +75,7 @@ public class DBManager {
         }
         return flag;
     }
-    
+    //might not need this function
     public void dropTable(String name) {
         try {
             Statement statement = this.conn.createStatement(); 
@@ -85,6 +93,16 @@ public class DBManager {
         }
     }
     
+    public void createInventoryTable(String tableName){
+        try{
+            statement = this.conn.createStatement();
+            String sqlCreate = "CREATE TABLE " + tableName + "(ITEM_ID INT, CATEGORY VARCHAR(30), ITEM_NAME VARCHAR(30), PRICE FLOAT)";
+            statement.executeUpdate(sqlCreate);
+            
+        }catch(SQLException e){
+            System.out.println("Error");
+        }
+    }
         
     public void createCustomerTable(String tableName) {
         String createCustomerTable = "CREATE  TABLE " + tableName
