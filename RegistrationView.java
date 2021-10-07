@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionListener;
-import java.util.Observable;
-import java.util.Observer;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,30 +17,30 @@ import javax.swing.JTextField;
  *
  * @author Ajit Singh ID: 19070642
  */
-public class RegistrationView implements Observer {
+public class RegistrationView {
 
-    JFrame aRegistrationFrame;
-    JPanel aHeaderPanel;
-    JPanel aCenterPanel;
-    JLabel aHeaderLabel;
-    JButton aRegBackButton;
-    JButton aRegSubmitButton;
-    JTextField aNameField;
-    JPasswordField aPassField;
-    JPasswordField aConfirmPasswordField;
-    JTextField aEmailField;
-    JTextArea aAddressArea;
+    protected JFrame aRegistrationFrame;
+    protected JPanel aHeaderPanel;
+    protected JPanel aCenterPanel;
+    protected JLabel aHeaderLabel;
+    protected JButton aRegBackButton;
+    protected JButton aRegSubmitButton;
+    protected JTextField aNameField;
+    protected JPasswordField aPassField;
+    protected JPasswordField aConfirmPasswordField;
+    protected JTextField aEmailField;
+    protected JTextArea aAddressArea;
 
     public RegistrationView() {
         System.out.println("[KFC: VIEWING REGISTRATION PAGE]");
         //------------------------------------------------------------------------------   
-// Background Image
+//Background Image
         ImageIcon aRegistrationBackgroundImage = new ImageIcon("./resources/RegistrationPageImages/KFCBackgroundImage.jpeg");
         Image aBackgroundImage = aRegistrationBackgroundImage.getImage().
                 getScaledInstance(1200, 800, java.awt.Image.SCALE_SMOOTH);
         aRegistrationBackgroundImage = new ImageIcon(aBackgroundImage);
 
-//JFrame        
+//Registraion Page JFrame      
         aRegistrationFrame = new JFrame("KFC REGISTRATION");
         aRegistrationFrame.setLayout(null);
         JLabel aBackground = new JLabel("", aRegistrationBackgroundImage, JLabel.CENTER);
@@ -50,14 +48,14 @@ public class RegistrationView implements Observer {
         aRegistrationFrame.add(aBackground);
 
 //------------------------------------------------------------------------------
-//Login Page Header Panel 
+//Registraion Page Header Panel 
         aHeaderPanel = new JPanel();
         aHeaderPanel.setLayout(null);
         aHeaderPanel.setBackground(new Color(0, 0, 0, 100));
         aHeaderPanel.setBounds(0, 0, 1200, 80);
         aBackground.add(aHeaderPanel);
 
-//Login Page Center Panel 
+//Registraion Page Center Panel 
         aCenterPanel = new JPanel();
         aCenterPanel.setLayout(null);
         aCenterPanel.setBackground(new Color(255, 255, 255, 100));
@@ -108,7 +106,7 @@ public class RegistrationView implements Observer {
         aConfirmPasswordField.setBounds(250, 170, 150, 20);
         aCenterPanel.add(aConfirmPasswordField);
 
-// Email Label + Text Field
+// Email Label + Email Field
         JLabel aEmailLabel = new JLabel("Enter Email");
         aEmailLabel.setFont(new Font("", Font.BOLD, 15));
         aEmailLabel.setBounds(40, 200, 150, 50);
@@ -118,7 +116,7 @@ public class RegistrationView implements Observer {
         aEmailField.setBounds(250, 220, 200, 20);
         aCenterPanel.add(aEmailField);
 
-// Address Label + Text Field
+// Address Label + Address Area
         JLabel aAddresslLabel = new JLabel("Enter Home Addresss");
         aAddresslLabel.setFont(new Font("", Font.BOLD, 15));
         aAddresslLabel.setBounds(40, 250, 200, 50);
@@ -132,12 +130,12 @@ public class RegistrationView implements Observer {
         aCenterPanel.add(aAddressArea);
 
 //------------------------------------------------------------------------------  
-//KFC Registration BACK BUTTON 
+//Back Button 
         aRegBackButton = new JButton("BACK");
         aRegBackButton.setBounds(5, 5, 50, 20);
         aHeaderPanel.add(aRegBackButton);
 
-//KFC Submit Button 
+//Submit Button 
         aRegSubmitButton = new JButton("Submit");
         aRegSubmitButton.setBounds(400, 400, 50, 20);
         aCenterPanel.add(aRegSubmitButton);
@@ -150,11 +148,6 @@ public class RegistrationView implements Observer {
         aRegistrationFrame.setVisible(false);
 //------------------------------------------------------------------------------
 
-    }
-
-    @Override
-    public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void addActionListener(ActionListener AL) {
