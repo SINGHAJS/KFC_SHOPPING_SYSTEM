@@ -8,7 +8,7 @@ import javax.swing.*;
 
 /**
  *
- * @author ajit_singh
+ * @author Ajit Singh ID: 19070642
  */
 public class ManagerView {
     
