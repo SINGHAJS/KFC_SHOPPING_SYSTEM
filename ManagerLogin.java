@@ -46,6 +46,8 @@ public static void verifyManagerLogin(LoginView aView, ManagerView aMgrView, Str
         } catch (SQLException ex) {
             System.out.println("[ERROR: " + ex + "]");
             JOptionPane.showMessageDialog(aView.aLoginPageFrame, "SQL EXCEPTION OCCURED", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            DBM.closeConnections();
         }
     }
 }

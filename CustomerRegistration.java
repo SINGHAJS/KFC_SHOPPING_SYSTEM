@@ -44,13 +44,14 @@ public class CustomerRegistration {
                     DBM = new DBManager(URL);
                     Statement st = DBM.getConnection().createStatement();
                     st.execute(insertCustomerTableValues);
-
                     /* uses the shopNowMessage function to allow the user to go 
                     straight to the HomeView.java View upon successful registration */
                     shopNowMessage(aRegView, aView, homeView);
                 } catch (SQLException ex) {
                     System.out.println("[ERROR:" + ex + "]");
                     JOptionPane.showMessageDialog(aRegView.aRegistrationFrame, "SQL EXCEPTION OCCURED", "ERROR", JOptionPane.ERROR_MESSAGE);
+                } finally {
+                    DBM.closeConnections();
                 }
             }
         } else {

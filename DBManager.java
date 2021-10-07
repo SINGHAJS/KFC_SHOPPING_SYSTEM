@@ -20,26 +20,33 @@ public class DBManager {
     private Statement statement;
 
     /**
-     * 
+     *
      * @return connection
      */
     public Connection getConnection() {
         return this.conn;
     }
 
-    /**
-     * 
-     * @param URL 
-     */
-    public DBManager(String URL) {
-        establishConnection(URL);
+    public Statement getStatement() {
+        try {
+            this.statement = this.conn.createStatement();
+        } catch (SQLException e) {
+            System.out.println("hi");
+        }
+        return this.statement;
     }
 
-    
     /**
-     * 
-     * @param URL 
-     * establish connection given the URL address
+     *
+     * @param URL
+     */
+    public DBManager(String URL) {
+        this.establishConnection(URL);
+    }
+
+    /**
+     *
+     * @param URL establish connection given the URL address
      */
     private void establishConnection(String URL) {
         if (this.conn == null) {
@@ -47,11 +54,11 @@ public class DBManager {
                 conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
                 System.out.println("[DB CONNECTION SUCCESSFUL]");
             } catch (SQLException ex) {
-                System.err.println("[ERROR: " + ex + "]");            
+                System.err.println("[ERROR: " + ex + "]");
             }
         }
     }
-    
+
     /**
      * close connection
      */
@@ -60,16 +67,16 @@ public class DBManager {
             try {
                 conn.close();
             } catch (SQLException ex) {
-                System.err.println("[ERROR: " + ex + "]");            
+                System.err.println("[ERROR: " + ex + "]");
             }
         }
     }
 
     /**
-     * 
+     *
      * @param tableName
      * @return flag
-     * 
+     *
      */
     public boolean checkTable(String tableName) {
         boolean flag = false;
@@ -86,16 +93,15 @@ public class DBManager {
                 rsDBMeta.close();
             }
         } catch (SQLException ex) {
-            System.err.println("[ERROR: " + ex + "]");            
+            System.err.println("[ERROR: " + ex + "]");
         }
         return flag;
     }
 
     /**
-     * 
-     * @param name 
-     * check if a table exists in the database
-     * if the table exists, remove the table from the database
+     *
+     * @param name check if a table exists in the database if the table exists,
+     * remove the table from the database
      */
     public void dropTable(String name) {
         try {
@@ -110,7 +116,7 @@ public class DBManager {
                 }
             }
         } catch (SQLException ex) {
-            System.err.println("[ERROR: " + ex + "]");            
+            System.err.println("[ERROR: " + ex + "]");
         }
     }
 
@@ -118,12 +124,27 @@ public class DBManager {
      * 
      * @param tableName 
      */
-    public void createFAQTable(String tableName) {       
-       
-        try {           
-            this.statement = getConnection().createStatement();           
+    public void createInventoryTable(String tableName) {
+        try {
+            statement = this.conn.createStatement();
+            String sqlCreate = "CREATE TABLE " + tableName + "(ITEM_ID INT, CATEGORY VARCHAR(30), ITEM_NAME VARCHAR(30), PRICE FLOAT)";
+            statement.executeUpdate(sqlCreate);
+
+        } catch (SQLException e) {
+            System.out.println("Error");
+        }
+    }
+            
+    /**
+     *
+     * @param tableName
+     */
+    public void createFAQTable(String tableName) {
+
+        try {
+            this.statement = getConnection().createStatement();
             System.out.println("[NEW " + tableName + " TABLE CREATED]");
-        } catch (SQLException ex) {            
+        } catch (SQLException ex) {
             System.err.println("[ERROR: " + ex + "]");
         }
 
