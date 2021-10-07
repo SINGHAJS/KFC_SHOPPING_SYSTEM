@@ -4,15 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionListener;
-import java.util.Observable;
-import java.util.Observer;
 import javax.swing.*;
 
 /**
  *
  * @author Ajit Singh ID: 19070642
  */
-public class LoginView implements Observer {
+public class LoginView {
 
     protected JFrame aLoginPageFrame;
     protected JPanel aLoginPagePanel;
@@ -58,7 +56,7 @@ public class LoginView implements Observer {
         keyIcon = new ImageIcon(loginKeyImage);
 
 //------------------------------------------------------------------------------   
-//JFrame        
+//Login Page JFrame        
         aLoginPageFrame = new JFrame("KFC LOGIN PAGE");
         aLoginPageFrame.setLayout(null);
         JLabel aBackground = new JLabel("", aLoginBackgroundImage, JLabel.CENTER);
@@ -71,12 +69,6 @@ public class LoginView implements Observer {
         aHeaderPanel.setBackground(new Color(0, 0, 0, 95));
         aHeaderPanel.setBounds(0, 0, 1200, 80);
         aBackground.add(aHeaderPanel);
-
-//Login Page Footer Panel 
-        JPanel aFooterPanel = new JPanel();
-        aFooterPanel.setBackground(new Color(0, 0, 0, 80));
-        aFooterPanel.setBounds(0, 695, 1200, 80);
-        aLoginPageFrame.add(aFooterPanel);
 
 //Login Page Center Panel 
         JPanel aCenterPanel = new JPanel();
@@ -127,6 +119,7 @@ public class LoginView implements Observer {
         aCenterPanel.add(aPassField);
 
 //------------------------------------------------------------------------------
+// Login Button
         aLoginButton = new JButton("Login");
         aLoginButton.setBounds(250, 150, 50, 20);
         aLoginButton.setBackground(Color.BLUE);
@@ -159,16 +152,6 @@ public class LoginView implements Observer {
         aLoginPageFrame.setResizable(false);
         aLoginPageFrame.setVisible(true);
 //------------------------------------------------------------------------------
-    }
-
-    /**
-     *
-     * @param o
-     * @param arg
-     */
-    @Override
-    public void update(Observable o, Object arg) {
-        // add code
     }
 
     /**
