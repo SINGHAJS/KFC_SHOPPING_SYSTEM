@@ -23,6 +23,7 @@ public class FAQPageView {
     JScrollPane aQnAScrollPane;
 
     FAQPageView() {
+        System.out.println("[KFC: VIEWING FAQ PAGE]");           
 //------------------------------------------------------------------------------   
 // Background Image
         ImageIcon aFAQBackgroundImage = new ImageIcon("./resources/FAQPageImages/woodenBackground.jpg");
@@ -121,7 +122,7 @@ public class FAQPageView {
         aFAQFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         aFAQFrame.setSize(1200, 800);
         aFAQFrame.setResizable(false);
-        aFAQFrame.setVisible(true);
+        aFAQFrame.setVisible(false);
 //------------------------------------------------------------------------------
     }
 
