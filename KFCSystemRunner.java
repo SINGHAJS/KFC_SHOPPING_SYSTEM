@@ -12,7 +12,7 @@ public class KFCSystemRunner {
     }
 
     public KFCSystemRunner() {
-        
+               
         LoginView aLoginPageView = new LoginView();
         RegistrationView aRegView = new RegistrationView();
         ManagerView aMgrView = new ManagerView();
@@ -20,8 +20,7 @@ public class KFCSystemRunner {
         HomeView aHomeView = new HomeView();        
         
         SystemModel Model = new SystemModel();                 
-        SystemController Controller = new SystemController(Model, aLoginPageView, aRegView, aMgrView, aFAQView, aHomeView);
-        Model.addObserver(aLoginPageView);                
+        SystemController Controller = new SystemController(Model, aLoginPageView, aRegView, aMgrView, aFAQView, aHomeView);                      
 
     }
 }
