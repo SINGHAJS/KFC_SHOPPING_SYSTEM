@@ -12,7 +12,6 @@ public class KFCSystemRunner {
     }
 
     public KFCSystemRunner() {
-
         LoginView aLoginPageView = new LoginView();
         RegistrationView aRegView = new RegistrationView();
         ManagerView aMgrView = new ManagerView();
