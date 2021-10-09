@@ -1,13 +1,8 @@
 package KFC_SHOPPING_SYSTEM;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Observable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,8 +16,7 @@ public class SystemModel extends Observable {
     private DBManager DBM;
     private PreparedStatement ps;
     private final String aCustomerTable = "CUSTOMER";
-    private final String aManagerTable = "MANAGER";
-    private final String aFAQTable = "KFC_FAQ";
+    private final String aManagerTable = "MANAGER";    
 
     public void SystemModel() {
         System.out.println("[KFC MODEL]");
@@ -76,32 +70,10 @@ public class SystemModel extends Observable {
      * @param FAQView 
      */
     public void viewFAQ(LoginView aView, FAQPageView FAQView) {
-        DBM = new DBManager(URL);
-        DBM.createFAQTable(aFAQTable);
+        DBM = new DBManager(URL);        
         aView.aLoginPageFrame.setVisible(false);
         FAQView.aFAQFrame.setVisible(true);      
-        readFAQFile(FAQView);
-    }
-
-    /**     
-     * @param aFAQView 
-     */
-    public void readFAQFile(FAQPageView aFAQView) {
-        try {
-            FileReader fr = new FileReader(FAQFile);
-            BufferedReader br = new BufferedReader(fr);
-            aFAQView.aFAQTextArea.read(br, null);
-            br.close();
-            aFAQView.aFAQTextArea.requestFocus();
-        } catch (FileNotFoundException ex) {
-            System.out.println("[ERROR: " + ex + "]");
-            JOptionPane.showMessageDialog(aFAQView.aFAQFrame,
-                    "ERROR: FILE NOT FOUND", "FILE ERROR", JOptionPane.ERROR_MESSAGE);
-        } catch (IOException ex) {
-            System.out.println("[ERROR: " + ex + "]");
-            JOptionPane.showMessageDialog(aFAQView.aFAQFrame,
-                    "ERROR: IO EXCEPTION OCCURED ", "FILpE ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+        File_IO.readFAQFile(FAQView, FAQFile);
     }
 
 //------------------------------------------------------------------------------       
