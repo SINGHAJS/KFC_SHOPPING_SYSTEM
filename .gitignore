@@ -2,7 +2,6 @@
 *.class
 
 # Log file
-*.log
 
 # BlueJ files
 *.ctxt
@@ -22,10 +21,7 @@
 *.DS_Store
 nbproject*
 build*
-KFC_DB_Ebd*
-*.xml
 *.mf
-*.properties
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
