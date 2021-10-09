@@ -135,18 +135,4 @@ public class DBManager {
         }
     }
             
-    /**
-     *
-     * @param tableName
-     */
-    public void createFAQTable(String tableName) {
-
-        try {
-            this.statement = getConnection().createStatement();
-            System.out.println("[NEW " + tableName + " TABLE CREATED]");
-        } catch (SQLException ex) {
-            System.err.println("[ERROR: " + ex + "]");
-        }
-
-    }
 }
