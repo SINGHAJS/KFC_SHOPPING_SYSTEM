@@ -23,10 +23,10 @@ public class FAQPageView {
     JScrollPane aQnAScrollPane;
 
     FAQPageView() {
-        System.out.println("[KFC: VIEWING FAQ PAGE]");           
+        System.out.println("[KFC: VIEWING FAQ PAGE]");
 //------------------------------------------------------------------------------   
-// Background Image
-        ImageIcon aFAQBackgroundImage = new ImageIcon("./resources/FAQPageImages/woodenBackground.jpg");
+// Background Image       
+        ImageIcon aFAQBackgroundImage = new ImageIcon("./resources/FAQPageImages/BackgroundImage.jpeg");
         Image aBackgroundImage = aFAQBackgroundImage.getImage().getScaledInstance(1200, 800, java.awt.Image.SCALE_SMOOTH);
         aFAQBackgroundImage = new ImageIcon(aBackgroundImage);
 
@@ -53,7 +53,7 @@ public class FAQPageView {
 //Login Page Center Panel 
         aCenterPanel = new JPanel();
         aCenterPanel.setLayout(null);
-        aCenterPanel.setBackground(new Color(255, 250, 250, 90));
+        aCenterPanel.setBackground(new Color(255, 255, 255));
         aCenterPanel.setBounds(100, 150, 1000, 600);
         aBackground.add(aCenterPanel);
 
@@ -78,37 +78,14 @@ public class FAQPageView {
         aFAQTextArea.setLineWrap(true);
         aFAQTextArea.setWrapStyleWord(true);
         aFAQTextArea.setEditable(false);
-        aFAQTextArea.setBounds(20, 50, 650, 500);
-        aFAQTextArea.setBackground(Color.WHITE);
+        aFAQTextArea.setFont(new Font("Andada Pro", Font.PLAIN, 16));
+        aFAQTextArea.setBounds(20, 50, 950, 500);
+        aFAQTextArea.setBackground(new Color(255, 255, 255));
 
         aFAQScrollPane = new JScrollPane(aFAQTextArea,
                 ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         aCenterPanel.add(aFAQTextArea);
-
-//------------------------------------------------------------------------------  
-// KFC USER ASK QUESTION
-        //Question Label
-        JLabel aAskAQuestionLabel = new JLabel("Got More Questions? Ask Them Below!");
-        aAskAQuestionLabel.setFont(new Font("", Font.BOLD, 15));
-        aAskAQuestionLabel.setBounds(680, -40, 400, 200);
-        aCenterPanel.add(aAskAQuestionLabel);
-
-        //Question Input TextArea
-        aAskQuestionArea = new JTextArea();
-        aAskQuestionArea.setLineWrap(true);
-        aAskQuestionArea.setWrapStyleWord(true);
-        aAskQuestionArea.setEditable(true);
-        aAskQuestionArea.setBounds(680, 80, 300, 200);
-        aAskQuestionArea.setBackground(Color.WHITE);
-        aQnAScrollPane = new JScrollPane(aAskQuestionArea, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
-                ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        aCenterPanel.add(aAskQuestionArea);
-
-        // Submit Button 
-        JButton aSubmitQuestionBtn = new JButton("SUBMIT");
-        aSubmitQuestionBtn.setBounds(920, 290, 60, 20);
-        aCenterPanel.add(aSubmitQuestionBtn);
 
 //------------------------------------------------------------------------------  
 //KFC FAQ BACK BUTTON 
