@@ -35,7 +35,7 @@ public class RegistrationView {
         System.out.println("[KFC: VIEWING REGISTRATION PAGE]");
         //------------------------------------------------------------------------------   
 //Background Image
-        ImageIcon aRegistrationBackgroundImage = new ImageIcon("./resources/RegistrationPageImages/KFCBackgroundImage.jpeg");
+        ImageIcon aRegistrationBackgroundImage = new ImageIcon("./resources/RegistrationPageImages/BackgroundImage.jpeg");
         Image aBackgroundImage = aRegistrationBackgroundImage.getImage().
                 getScaledInstance(1200, 800, java.awt.Image.SCALE_SMOOTH);
         aRegistrationBackgroundImage = new ImageIcon(aBackgroundImage);
@@ -59,7 +59,7 @@ public class RegistrationView {
         aCenterPanel = new JPanel();
         aCenterPanel.setLayout(null);
         aCenterPanel.setBackground(new Color(255, 255, 255, 100));
-        aCenterPanel.setBounds(600, 150, 500, 500);
+        aCenterPanel.setBounds(350, 150, 500, 500);
         aBackground.add(aCenterPanel);
 
 //------------------------------------------------------------------------------
@@ -85,7 +85,7 @@ public class RegistrationView {
         aNameField = new JTextField();
         aNameField.setBounds(250, 70, 150, 20);
         aCenterPanel.add(aNameField);
-
+                
 // Password Label + Password Field
         JLabel aPasswordLabel = new JLabel("Enter Password");
         aPasswordLabel.setFont(new Font("", Font.BOLD, 15));
