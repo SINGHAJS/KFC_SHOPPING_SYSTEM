@@ -36,7 +36,7 @@ public class SystemModel extends Observable {
      * @param aMgrView
      */
     public void performCustomerLogin(LoginView aView, HomeView aHomeView, ManagerView aMgrView) {
-        DBM = new DBManager(URL);                
+        DBM = new DBManager(URL);           
         CustomerLogin.verifyCustomerLogin(aView, aHomeView, aCustomerTable, DBM, ps, rs);
     }
 
