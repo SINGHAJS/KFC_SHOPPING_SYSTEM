@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Fri Oct 08 15:54:22 NZDT 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017c-5dd2-b451-00000305a938 
+on database directory /Users/ajit_singh/Desktop/NetBeans Projects/Shopping_System/KFC_DB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@45ee12a7 
+Loaded from file:/Users/ajit_singh/Desktop/db-derby-10.14.2.0-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=15.0.2+7-27
+user.dir=/Users/ajit_singh/Desktop/NetBeans Projects/Shopping_System
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.16
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
