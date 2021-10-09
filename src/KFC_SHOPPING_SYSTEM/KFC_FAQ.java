@@ -1,6 +1,5 @@
 package KFC_SHOPPING_SYSTEM;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
