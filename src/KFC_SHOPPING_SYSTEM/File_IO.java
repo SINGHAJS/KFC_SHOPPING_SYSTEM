@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -75,8 +76,8 @@ public class File_IO {
         try {
             aPW = new PrintWriter(new FileOutputStream(fileName, true));
             // writing the content to the FAQ file
-            aPW.append("\n--------------------------------------------------------------------------------\nQuestion: " + question
-                    + "\n--------------------------------------------------------------------------------\nAnswer: " + answer + "\n");
+            aPW.append("\nQuestion: " + question
+                    + "\nAnswer: " + answer + "\n");
             aPW.close(); // close file
             System.out.println("[QUESTION SUBMTTED]");
 
@@ -84,6 +85,27 @@ public class File_IO {
             System.out.println("Exception: " + ex); // error
         }
 
+    }
+
+    /**
+     * @param aFAQView
+     */
+    public static void readFAQFile(FAQPageView aFAQView, String FAQFile) {
+        try {
+            FileReader fr = new FileReader(FAQFile);
+            BufferedReader br = new BufferedReader(fr);
+            aFAQView.aFAQTextArea.read(br, null);
+            br.close();
+            aFAQView.aFAQTextArea.requestFocus();
+        } catch (FileNotFoundException ex) {
+            System.out.println("[ERROR: " + ex + "]");
+            JOptionPane.showMessageDialog(aFAQView.aFAQFrame,
+                    "ERROR: FILE NOT FOUND", "FILE ERROR", JOptionPane.ERROR_MESSAGE);
+        } catch (IOException ex) {
+            System.out.println("[ERROR: " + ex + "]");
+            JOptionPane.showMessageDialog(aFAQView.aFAQFrame,
+                    "ERROR: IO EXCEPTION OCCURED ", "FILpE ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
 }
