@@ -2,6 +2,8 @@ package KFC_SHOPPING_SYSTEM;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -16,7 +18,7 @@ public class CustomerRegistration {
     // java regex for name, address, email and password
     private static final String USER_NAME_REGEX = "^[a-zA-Z0-9]{3,}$";
     private static final String USER_ADDRESS_REGEX = "^[#.0-9a-zA-Z\\s/,-]+$";
-    private static final String USER_EMAIL_REGEX = "([A-Za-z0-9-_.]+@[A-Za-z0-9-_]+(?:\\.[A-Za-z0-9]+)+)";    
+    private static final String USER_EMAIL_REGEX = "([A-Za-z0-9-_.]+@[A-Za-z0-9-_]+(?:\\.[A-Za-z0-9]+)+)";
     private static final String USER_PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{7,}$";
 
     /**
@@ -31,8 +33,7 @@ public class CustomerRegistration {
      * and check if the text matches the requirements. If so, add the details to
      * the database.
      */
-    public static void aNewCustomer(RegistrationView aRegView, String aCustomerTable, DBManager DBM, String URL, LoginView aView, HomeView homeView) {
-        // define variables 
+    public static void aNewCustomer(RegistrationView aRegView, String aCustomerTable, DBManager DBM, String URL, LoginView aView, HomeView homeView) {        
         // set the variables values to the swing components from the RegistrationView.java class
         String nameField = aRegView.aNameField.getText().trim();
         String passField = aRegView.aPassField.getText();
@@ -45,10 +46,13 @@ public class CustomerRegistration {
             try {
                 DBM = new DBManager(URL);
                 Statement st = DBM.getConnection().createStatement();
-                st.execute(insertCustomerTableValues);
-                /* uses the shopNowMessage function to allow the user to go 
+                if (checkUserExists(aCustomerTable, DBM, aRegView)) {
+                    st.execute(insertCustomerTableValues);
+                    /* uses the shopNowMessage function to allow the user to go 
                     straight to the HomeView.java View upon successful registration */
-                shopNowMessage(aRegView, aView, homeView);
+                    shopNowMessage(aRegView, aView, homeView);
+                }
+
             } catch (SQLException ex) {
                 System.out.println("[ERROR:" + ex + "]");
                 JOptionPane.showMessageDialog(aRegView.aRegistrationFrame, "SQL EXCEPTION OCCURED", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -88,6 +92,35 @@ public class CustomerRegistration {
             default:
                 break;
         }
+    }
+    
+    /**
+     * 
+     * @param table
+     * @param DBM
+     * @param aRegView
+     * @return Boolean 
+     * 
+     * This function checks if a current user exists in the database with the same
+     * username. If a username exists in the database it will return false otherwise
+     * it will return true and the registration of a new customer will proceed.
+     */
+    public static boolean checkUserExists(String table, DBManager DBM, RegistrationView aRegView) {
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            String aCustomerLogin = "SELECT * FROM " + table + " WHERE USERNAME=?";
+            ps = DBM.getConnection().prepareStatement(aCustomerLogin);
+            ps.setString(1, aRegView.aNameField.getText());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "USERNAME TAKE: PLEASE PICK A DIFFERENT USERNAME");
+                return false;
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(aRegView.aRegistrationFrame, "SQL EXCEPTION OCCURED", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        return true;
     }
 
     /**
