@@ -25,7 +25,7 @@ public class CustomerLogin {
      * to the customer to view the KFC home page
      * 
      */
-    public void verifyCustomerLogin(LoginView aView, HomeView aHomeView, String aCustomerTable, DBManager DBM, PreparedStatement ps, ResultSet rs) {
+    public static void verifyCustomerLogin(LoginView aView, HomeView aHomeView, String aCustomerTable, DBManager DBM, PreparedStatement ps, ResultSet rs) {
         String aCustomerLogin = "SELECT * FROM " + aCustomerTable + " WHERE USERNAME=? AND PASSWORD=?";
 
         try {

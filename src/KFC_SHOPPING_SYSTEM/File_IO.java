@@ -73,7 +73,7 @@ public class File_IO {
     /**
      * @param aFAQView
      */
-    public void readFAQFile(FAQPageView aFAQView, String FAQFile) {
+    public static void readFAQFile(FAQPageView aFAQView, String FAQFile) {
         try {
             FileReader fr = new FileReader(FAQFile);
             BufferedReader br = new BufferedReader(fr);
