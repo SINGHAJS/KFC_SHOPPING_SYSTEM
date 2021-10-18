@@ -46,7 +46,6 @@ public class RegistrationView {
         JLabel aBackground = new JLabel("", aRegistrationBackgroundImage, JLabel.CENTER);
         aBackground.setBounds(0, 0, 1200, 800);
         aRegistrationFrame.add(aBackground);
-
 //------------------------------------------------------------------------------
 //Registraion Page Header Panel 
         aHeaderPanel = new JPanel();

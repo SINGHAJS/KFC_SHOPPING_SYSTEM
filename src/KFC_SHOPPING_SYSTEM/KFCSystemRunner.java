@@ -8,8 +8,8 @@ package KFC_SHOPPING_SYSTEM;
 public class KFCSystemRunner {
 
     public static void main(String[] args) {
-        KFCSystemRunner aLoginPageRunner = new KFCSystemRunner();
-    }
+        KFCSystemRunner aLoginPageRunner = new KFCSystemRunner();        
+    }    
 
     public KFCSystemRunner() {
         LoginView aLoginPageView = new LoginView();
@@ -17,7 +17,7 @@ public class KFCSystemRunner {
         ManagerView aMgrView = new ManagerView();
         FAQPageView aFAQView = new FAQPageView();
         HomeView aHomeView = new HomeView();
-
+        
         SystemModel Model = new SystemModel();
         SystemController Controller = new SystemController(Model, aLoginPageView, aRegView, aMgrView, aFAQView, aHomeView);
 

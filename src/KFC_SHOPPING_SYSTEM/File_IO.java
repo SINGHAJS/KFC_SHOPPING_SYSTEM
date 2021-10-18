@@ -69,23 +69,6 @@ public class File_IO {
         }
     }
 
-    //method to write to the FAQ file in a formated way 
-    public static void writeToFAQFile(String fileName, String question, String answer) {
-
-        PrintWriter aPW = null;
-        try {
-            aPW = new PrintWriter(new FileOutputStream(fileName, true));
-            // writing the content to the FAQ file
-            aPW.append("\nQuestion: " + question
-                    + "\nAnswer: " + answer + "\n");
-            aPW.close(); // close file
-            System.out.println("[QUESTION SUBMTTED]");
-
-        } catch (FileNotFoundException ex) {
-            System.out.println("Exception: " + ex); // error
-        }
-
-    }
 
     /**
      * @param aFAQView

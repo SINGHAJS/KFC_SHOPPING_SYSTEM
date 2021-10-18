@@ -121,18 +121,65 @@ public class DBManager {
     }
 
     /**
-     * 
-     * @param tableName 
+     *
+     * @param tableName
      */
     public void createInventoryTable(String tableName) {
         try {
             statement = this.conn.createStatement();
             String sqlCreate = "CREATE TABLE " + tableName + "(ITEM_ID INT, CATEGORY VARCHAR(30), ITEM_NAME VARCHAR(30), PRICE FLOAT)";
             statement.executeUpdate(sqlCreate);
-
         } catch (SQLException e) {
             System.out.println("Error");
         }
     }
-            
+    
+    /**
+     * 
+     * @param tableName 
+     * create "CUSTOMER" table
+     */
+    public void createCustomerTable(String tableName) {
+        String createCustomerTable = "CREATE  TABLE " + tableName
+                + " (USERNAME VARCHAR(50) NOT NULL, PASSWORD VARCHAR(50) NOT NULL, "
+                + "EMAIL VARCHAR(50), ADDRESS VARCHAR(100) NOT NULL)";
+        String insertCustomerTableValues = "INSERT INTO " + tableName
+                + " VALUES ('pdc', 'Password12345', 'pdc@pdcProjects.com', "
+                + "'123 Street Auckland New Zealand')";
+        try {
+            if (!checkTable(tableName)) {
+                this.statement = getConnection().createStatement();
+                statement.executeUpdate(createCustomerTable);
+                statement.executeUpdate(insertCustomerTableValues);
+                System.out.println("[NEW " + tableName + " TABLE CREATED]");
+            }
+        } catch (SQLException ex) {
+            System.err.println("[ERROR: " + ex + "]");
+        }
+    }
+
+    /**
+     * 
+     * @param tableName 
+     * create "MANAGER" table
+     */
+    public void createManagerTable(String tableName) {
+        String createCustomerTable = "CREATE  TABLE " + tableName
+                + " (USERNAME VARCHAR(50) NOT NULL, PASSWORD VARCHAR(50) NOT NULL, "
+                + "EMAIL VARCHAR(50), ADDRESS VARCHAR(100) NOT NULL)";
+        String insertCustomerTableValues = "INSERT INTO " + tableName
+                + " VALUES ('Manager', 'Manager12345', 'manager@kfcSystem.com', "
+                + "'101 KFC Street Auckland New Zealand')";
+        try {
+            if (!checkTable(tableName)) {
+                this.statement = getConnection().createStatement();
+                statement.executeUpdate(createCustomerTable);
+                statement.executeUpdate(insertCustomerTableValues);
+                System.out.println("[NEW " + tableName + " TABLE CREATED]");
+            }
+        } catch (SQLException ex) {
+            System.err.println("[ERROR: " + ex + "]");
+        }
+    }
+
 }

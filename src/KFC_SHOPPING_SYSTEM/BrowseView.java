@@ -8,6 +8,7 @@ import java.util.Observer;
 import java.util.Observable;
 import java.util.Vector;
 import javax.swing.JFrame;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -23,36 +24,12 @@ import javax.swing.event.ListSelectionListener;
 public class BrowseView extends JFrame implements Observer {
 
     private final JPanel headPanel = new JPanel();
-
-    private final JPanel browsePanel = new JPanel();
-    private final JPanel cartPanel = new JPanel();
-
+    private final BrowsePanel browsePanel;
+    private final CartPanel cartPanel;
+    
     private final JLabel browseLabel = new JLabel("BROWSE MENU");
     private final JLabel cLabel = new JLabel("VIEW CART");
     private final JLabel backLabel = new JLabel("Back to LoginPage");
-    private final JLabel chooseC = new JLabel("CHOOSE A CATEGORY: ");
-    private final JLabel pickItem = new JLabel("PICK AN ITEM");
-
-    private ListSelectionModel listselectionmodel;
-    private JScrollPane jcpCategory = new JScrollPane();
-    private JScrollPane jcpItems = new JScrollPane();
-    private JList category = new JList();
-    private JList items = new JList();
-
-    public static void main(String[] args) {
-        BrowseView g = new BrowseView();
-        Vector<String> lists = new Vector<>();
-        lists.add("fffffffff");
-        lists.add("abcedefoeioiifg");
-        g.browse();
-        g.categoryList(lists);
-        Vector<Products> i = new Vector<>();
-        i.add(new Products("abc", "rohit", 9.99));
-        i.add(new Products("abc", "rohit", 9.99));
-        i.add(new Products("abc", "rohit", 9.99));
-        
-        g.itemsList(i);
-    }
 
     public BrowseView() {
         this.setSize(1200, 800);
@@ -62,158 +39,146 @@ public class BrowseView extends JFrame implements Observer {
         this.setLayout(null);
         this.setVisible(true);
         back();
+        browsePanel = new BrowsePanel();
+        cartPanel = new CartPanel();
     }
 
-    public void browse() {
-        browsePanel.setBackground(Color.WHITE);
-        browsePanel.setBounds(0, 30, 1200, 770);
-        browsePanel.setLayout(null);
+    public static void main(String[] args) {
 
-        this.getContentPane().remove(cartPanel);
-        //when view connected with main add repaint
+        BrowseView g = new BrowseView();
+        Vector<String> lists = new Vector<>();
+        lists.add("Buckets");
+        lists.add("Individual Meals");
+        lists.add("Burgers");
+        lists.add("Twisters & Salad");
+        lists.add("Snacks");
+        lists.add("Sides");
+        lists.add("Drinks & Desserts");
+
+        //g.cart(lists);
+        // g.browse();
+        g.categoryList(lists);
+        Vector<Products> items = new Vector<>();
+        items.add(new Products("SUCK", "YOUR", 69));
+        items.add(new Products("SUCK", "YOUR", 69));
+        items.add(new Products("SUCK", "YOUR", 69));
+        items.add(new Products("SUCK", "YOUR", 69));
+        items.add(new Products("SUCK", "YOUR", 69));
+        items.add(new Products("SUCK", "Colonel Ultimate Burger Meal", 16.59));
+        //g.itemsList(items);
+        //lists.add("HEY");
+        // g.categoryList(lists);
 
     }
 
     public void categoryList(Vector<String> clist) {
-        chooseC.setFont(new Font("", Font.BOLD, 15));
-        chooseC.setForeground(Color.BLACK);
-        chooseC.setBounds(50, 5, 200, 50);
-
-        category = new JList(clist);
-        category.setForeground(Color.WHITE);
-        category.setBackground(Color.DARK_GRAY);
-        category.setSelectionBackground(Color.lightGray);
-        category.setSelectionBackground(Color.lightGray);
-
-        category.getSelectionModel().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        listselectionmodel = category.getSelectionModel();
-        
-        jcpCategory = new JScrollPane(category, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-
-        jcpCategory.setBounds(50, 50, 200, 300);
-        browsePanel.add(jcpCategory);
-        browsePanel.add(chooseC);
-        this.add(browsePanel);
+        this.getContentPane().removeAll();
+        this.back();
+        getBrowsePanel().categoryList(clist);
+        this.add(getBrowsePanel());
         this.revalidate();
         this.repaint();
         this.setVisible(true);
     }
 
     public void itemsList(Vector<Products> ilist) {
-        pickItem.setFont(new Font("", Font.BOLD, 15));
-        pickItem.setForeground(Color.BLACK);
-        pickItem.setBounds(300, 5, 200, 50);
-
-        items = new JList(ilist);
-        items.setForeground(Color.WHITE);
-        items.setBackground(Color.DARK_GRAY);
-        items.setSelectionBackground(Color.lightGray);
-        items.setSelectionBackground(Color.lightGray);
-
-        items.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        jcpItems = new JScrollPane(items, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-
-        jcpItems.setBounds(300, 50, 230, 300);
-
-        browsePanel.add(pickItem);
-        browsePanel.add(jcpItems);
-
-        this.add(browsePanel);
+        getBrowsePanel().itemsList(ilist);
+        this.add(getBrowsePanel());
         this.revalidate();
         this.repaint();
         this.setVisible(true);
+    }
 
+    public void cart(Vector<String> items) {
+        this.getContentPane().removeAll();
+        this.back();
+        getCartPanel().cart(items);
+        this.add(getCartPanel());
+        this.revalidate();
+        this.repaint();
+        this.setVisible(true);
     }
 
     public void back() {
+
         headPanel.setBackground(Color.DARK_GRAY);
         headPanel.setBounds(0, 0, 1200, 30);
         headPanel.setLayout(null);
 
-        browseLabel.setFont(new Font("", Font.BOLD, 13));
+        browseLabel.setFont(new Font("", Font.BOLD, 20));
         browseLabel.setForeground(Color.WHITE);
-        browseLabel.setBounds(475, 0, 100, 30);
+        browseLabel.setBounds(400, 0, 200, 30);
 
-        cLabel.setFont(new Font("", Font.BOLD, 13));
+        cLabel.setFont(new Font("", Font.BOLD, 20));
         cLabel.setForeground(Color.WHITE);
-        cLabel.setBounds(625, 0, 100, 30);
+        cLabel.setBounds(625, 0, 200, 30);
 
-        backLabel.setFont(new Font("", Font.BOLD, 13));
+        backLabel.setFont(new Font("", Font.BOLD, 20));
         backLabel.setForeground(Color.WHITE);
-        backLabel.setBounds(20, 0, 150, 30);
+        backLabel.setBounds(20, 0, 200, 30);
 
         headPanel.add(cLabel);
         headPanel.add(browseLabel);
         headPanel.add(backLabel);
 
         this.add(headPanel);
-
-    }
-
-    public void items() {
-
-        this.revalidate();
         this.repaint();
         this.setVisible(true);
     }
 
-    public void cart() {
-        cartPanel.setBackground(Color.BLUE);
-        cartPanel.setBounds(0, 30, 1200, 770);
-        cartPanel.setLayout(null);
-
-        //cButton.setBounds(600, 400, 100, 300);
-        //cartPanel.add(cButton);
-        this.getContentPane().remove(browsePanel);
-        cartPanel.setVisible(true);
-
-        this.add(cartPanel);
-        this.revalidate();
-        this.repaint();
+    public void addMouseListener(MouseListener mouseListener) {
+        this.browseLabel.addMouseListener(mouseListener);
+        this.cLabel.addMouseListener(mouseListener);
+        this.backLabel.addMouseListener(mouseListener);
     }
 
-    public void addMouseListener(MouseListener listener) {
-        this.browseLabel.addMouseListener(listener);
-        this.cLabel.addMouseListener(listener);
+    public void addActionListener(ActionListener actionListener) {
+        getBrowsePanel().getAddButton().addActionListener(actionListener);
     }
 
-    public void addActionListener(ActionListener listener) {
+    public void addListSelectionListener(ListSelectionListener selectionListener) {
+        getBrowsePanel().getCategoryList().addListSelectionListener(selectionListener);
+        getBrowsePanel().getItemsList().addListSelectionListener(selectionListener);
 
-    }
-
-    public void addListSelectionListener(ListSelectionListener listener) {
-       //this.category.addListSelectionListener(listener);
-        this.listselectionmodel.addListSelectionListener(listener);
     }
 
     @Override
     public void update(Observable o, Object arg) {
         BrowseData data = (BrowseData) arg;
-        System.out.println(data.categories.isEmpty());
-        System.out.println(data.items);
         System.out.println(data.items.isEmpty());
-        System.out.println("-----------");
-            if (!data.categories.isEmpty()) {
+        if (!data.items.isEmpty()) {
+            System.out.println("hi");
+            this.itemsList(data.items);
+        } else if (!data.categories.isEmpty()) {
+            System.out.println("displaying list");
             this.categoryList(data.categories);
-            if(!data.items.isEmpty()){
-               // this.itemsList(data.items);
-            }
-        }else if (!data.items.isEmpty()) {
-            System.out.println("n");
-           // this.itemsList(data.items);
+        } else if (data.adminFlag) {
+            this.setVisible(false);
         }
-    }
 
-    public JList getCategory() {
-        return category;
     }
 
     public JLabel getBrowseLabel() {
         return browseLabel;
     }
 
+    public JLabel getBackLabel() {
+        return backLabel;
+    }
+
     public JLabel getcLabel() {
         return cLabel;
+    }
+
+    /**
+     * @return the browsePanel
+     */
+    public BrowsePanel getBrowsePanel() {
+        return browsePanel;
+    }
+
+    public CartPanel getCartPanel() {
+        return cartPanel;
     }
 
 }
