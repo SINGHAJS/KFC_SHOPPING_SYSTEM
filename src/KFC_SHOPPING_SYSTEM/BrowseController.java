@@ -15,10 +15,12 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
 
     public BrowseModel model;
     public BrowseView view;
-
+    public AdminView view2;
     public BrowseController(BrowseModel model, BrowseView view) {
         this.view = view;
         this.model = model;
+        view2 = new AdminView();
+        this.view.addListSelectionListener(this);
         this.view.addActionListener(this);
         this.view.addMouseListener(this);
     }
@@ -27,23 +29,24 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
         System.out.println(command);
+        switch (command){
+            case "ADD ITEM TO CART":
+                
+                break;
+        }
     }
 
     @Override
     public void valueChanged(ListSelectionEvent ex) { 
-        String category = (String) this.view.getCategory().getSelectedValue();
-          System.out.println(category);
-       if(!ex.getValueIsAdjusting()){
-           System.out.println("valuechangeed");
-          // System.out.println((String)this.view.getCategory().getSelectedValue());
-          // System.out.println(ex.);
-         // String category = (String) this.view.getCategory().getSelectedValue();
-          //System.out.println(category);
-          if (category != null){
-         // this.model.itemsList(category);
-          }
-         // System.out.println(ex.getSource().equals(this.view.getCategory()));
-       }
+        
+        if(ex.getValueIsAdjusting()){
+            if (!this.view.getBrowsePanel().getCategoryList().isSelectionEmpty()){
+             String categoryName = this.view.getBrowsePanel().getCategoryList().getSelectedValue().toString();
+             System.out.println(categoryName);
+            this.model.itemsList(categoryName);
+            }
+        }
+        
     }
             
     @Override
@@ -51,13 +54,13 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
         Object o = e.getSource();
         if (o.equals(this.view.getBrowseLabel())) {
             System.out.println("switching panel to browse");
-            this.view.browse();
             this.model.categoryList();
-            this.view.addListSelectionListener(this);
-          //  view.browse();
         } else if(o.equals(this.view.getcLabel())){
             System.out.println("switching panel to cart");
-            view.cart();
+            //this.view.cart();
+        } else if (o.equals(this.view.getBackLabel())){
+            System.out.println("Switching back");
+            this.model.adminPage();
         }
     }
 

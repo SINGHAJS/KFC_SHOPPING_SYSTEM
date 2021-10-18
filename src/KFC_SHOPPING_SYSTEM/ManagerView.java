@@ -11,7 +11,7 @@ import javax.swing.*;
  * @author Ajit Singh ID: 19070642
  */
 public class ManagerView {
-    
+
     LoginView aView;
 
     JFrame aManagerFrame;
@@ -21,7 +21,7 @@ public class ManagerView {
     JButton aLogOutButton;
 
     public ManagerView() {
-        System.out.println("[KFC: VIEWING MANAGER PAGE]");                           
+        System.out.println("[KFC: VIEWING MANAGER PAGE]");
         //------------------------------------------------------------------------------   
 // Background Image
         ImageIcon aManagerBackgroundImage = new ImageIcon("./resources/RegistrationPageImages/KFCBackgroundImage.jpeg");
@@ -57,7 +57,7 @@ public class ManagerView {
         JLabel aTitleLabel = new JLabel("WELCOME ");
         aTitleLabel.setBounds(350, 0, 550, 80);
         aTitleLabel.setForeground(Color.WHITE);
-        aTitleLabel.setFont(new Font("", Font.BOLD, 50));        
+        aTitleLabel.setFont(new Font("", Font.BOLD, 50));
         aHeaderPanel.add(aTitleLabel);
 
 // Center Panel Label
