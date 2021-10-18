@@ -22,7 +22,7 @@ public class SystemController implements ActionListener {
      * @param aRegView
      * @param aMgrView
      * @param aFAQView
-     * @param aHomeView 
+     * @param aHomeView
      */
     public SystemController(SystemModel aModel, LoginView aLoginPageView, RegistrationView aRegView, ManagerView aMgrView, FAQPageView aFAQView, HomeView aHomeView) {
         System.out.println("[KFC: CONTROLLER]");
@@ -64,53 +64,47 @@ public class SystemController implements ActionListener {
             System.out.println("[PERFORMING CUSTOMER LOGIN]");
             this.aModel.performCustomerLogin(this.aLoginPageView, this.aHomeView, this.aMgrView);
 
-        } 
-//MANAGER LOGIN BUTTON----------------------------------------------------------        
+        } //MANAGER LOGIN BUTTON----------------------------------------------------------        
         else if (e.getSource() == aLoginPageView.aManagerLoginButton) {
 
             System.out.println("[PERFORMING MANAGER LOGIN]");
             this.aModel.performManagerLogin(this.aLoginPageView, this.aMgrView);
 
-        }
-//REGISTRATION BUTTON-----------------------------------------------------------        
+        } //REGISTRATION BUTTON-----------------------------------------------------------        
         else if (e.getSource() == aLoginPageView.aRegistrationButton) {
 
-            System.out.println("[PERFORMING CUSTOMER REGISTRATION]");
-            this.aModel.viewRegistrationPage(this.aLoginPageView, this.aRegView);
+            System.out.println("[PERFORMING CUSTOMER REGISTRATION]");            
+            this.aLoginPageView.aLoginPageFrame.setVisible(false);
+            aRegView.aRegistrationFrame.setVisible(true);
 
-        }   
-//REGISTRATION BACK BUTTON------------------------------------------------------        
+        } //REGISTRATION BACK BUTTON------------------------------------------------------        
         else if (e.getSource() == this.aRegView.aRegBackButton) {
-
+            
             System.out.println("[GOING BACK TO LOGIN PAGE]");
             this.aRegView.aRegistrationFrame.setVisible(false);
             this.aLoginPageView.aLoginPageFrame.setVisible(true);
 
-        } 
-//REGISTRATION SUBMIT BUTTON----------------------------------------------------        
+        } //REGISTRATION SUBMIT BUTTON----------------------------------------------------        
         else if (e.getSource() == this.aRegView.aRegSubmitButton) {
 
             System.out.println("[ATTEMPTING REGISTRATION FOR NEW USER]");
             this.aModel.createNewCustomerAccount(this.aRegView, this.aLoginPageView, this.aHomeView);
 
-        } 
-//FAQ BUTTON--------------------------------------------------------------------        
+        } //FAQ BUTTON--------------------------------------------------------------------        
         else if (e.getSource() == this.aLoginPageView.aFAQButton) {
 
-            System.out.println("[VIEWING KFC FAQ]");            
+            System.out.println("[VIEWING KFC FAQ]");
             this.aModel.viewFAQ(this.aLoginPageView, this.aFAQView);
 
-        }
-//FAQ BACK BUTTON---------------------------------------------------------------        
+        } //FAQ BACK BUTTON---------------------------------------------------------------        
         else if (e.getSource() == this.aFAQView.aBackButton) {
 
-            System.out.println("[GOING BACK TO LOGIN PAGE]");            
+            System.out.println("[GOING BACK TO LOGIN PAGE]");
             this.aLoginPageView.aLoginPageFrame.setVisible(true);
             this.aFAQView.aFAQFrame.setVisible(false);
         }
 //------------------------------------------------------------------------------
-       
-        
+
     }
 
 }
