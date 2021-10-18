@@ -32,8 +32,9 @@ public class SystemModel extends Observable {
      * @param aMgrView
      */
     public void performCustomerLogin(LoginView aView, HomeView aHomeView, ManagerView aMgrView) {
-        this.DBM = new DBManager(URL);           
-        CustomerLogin.verifyCustomerLogin(aView, aHomeView, aCustomerTable, DBM, ps, rs);
+        this.DBM = new DBManager(URL);     
+        CustomerLogin aCL = new CustomerLogin();
+        aCL.verifyCustomerLogin(aView, aHomeView, aCustomerTable, DBM, ps, rs);
     }
 
 //CUSTOMER REGISTRATION---------------------------------------------------------
@@ -43,7 +44,8 @@ public class SystemModel extends Observable {
      * @param aHomeView
      */
     public void createNewCustomerAccount(RegistrationView aRegView, LoginView aView, HomeView aHomeView) {
-        CustomerRegistration.aNewCustomer(aRegView, aCustomerTable, DBM, URL, aView, aHomeView);
+        CustomerRegistration aCR = new CustomerRegistration();
+        aCR.aNewCustomer(aRegView, aCustomerTable, DBM, URL, aView, aHomeView);
     }
 
 //MANAGER-----------------------------------------------------------------------  
@@ -53,7 +55,8 @@ public class SystemModel extends Observable {
      */
     public void performManagerLogin(LoginView aView, ManagerView aMgrView) {
         this.DBM = new DBManager(URL);  
-        ManagerLogin.verifyManagerLogin(aView, aMgrView, aManagerTable, DBM, ps, rs);
+        ManagerLogin aML = new ManagerLogin();
+        aML.verifyManagerLogin(aView, aMgrView, aManagerTable, DBM, ps, rs);
 
     }
 
@@ -65,8 +68,9 @@ public class SystemModel extends Observable {
     public void viewFAQ(LoginView aView, FAQPageView FAQView) {
         this.DBM = new DBManager(URL);    
         aView.aLoginPageFrame.setVisible(false);
-        FAQView.aFAQFrame.setVisible(true);      
-        File_IO.readFAQFile(FAQView, FAQFile);
+        FAQView.aFAQFrame.setVisible(true);
+        File_IO aFIO = new File_IO();
+        aFIO.readFAQFile(FAQView, FAQFile);
     }
 
 //------------------------------------------------------------------------------       

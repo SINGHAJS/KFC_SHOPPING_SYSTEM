@@ -33,7 +33,7 @@ public class CustomerRegistration {
      * and check if the text matches the requirements. If so, add the details to
      * the database.
      */
-    public static void aNewCustomer(RegistrationView aRegView, String aCustomerTable, DBManager DBM, String URL, LoginView aView, HomeView homeView) {        
+    public void aNewCustomer(RegistrationView aRegView, String aCustomerTable, DBManager DBM, String URL, LoginView aView, HomeView homeView) {        
         // set the variables values to the swing components from the RegistrationView.java class
         String nameField = aRegView.aNameField.getText().trim();
         String passField = aRegView.aPassField.getText();
@@ -75,7 +75,7 @@ public class CustomerRegistration {
      * RegistrationView.java class View or let the user to go back to the
      * LoginView.java class View.
      */
-    public static void shopNowMessage(RegistrationView aRegView, LoginView aView, HomeView homeView) {
+    public void shopNowMessage(RegistrationView aRegView, LoginView aView, HomeView homeView) {
         int input = JOptionPane.showConfirmDialog(aRegView.aRegistrationFrame, "THANK YOU FOR REGISTERING, FINGER LIKING DEALS ARE WAITING FOR YOU AT KFC!\nSHOP NOW?", "REGISTRATION SUCCESSFUL", JOptionPane.YES_NO_OPTION);
         switch (input) {
             case 0: // user inputs "Yes" as the response
@@ -105,7 +105,7 @@ public class CustomerRegistration {
      * username. If a username exists in the database it will return false otherwise
      * it will return true and the registration of a new customer will proceed.
      */
-    public static boolean checkUserExists(String table, DBManager DBM, RegistrationView aRegView) {
+    public boolean checkUserExists(String table, DBManager DBM, RegistrationView aRegView) {
         PreparedStatement ps;
         ResultSet rs;
         try {

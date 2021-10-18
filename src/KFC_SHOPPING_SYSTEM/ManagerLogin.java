@@ -26,7 +26,7 @@ public class ManagerLogin {
      * verify the manager login, if the manager data exists in the database, if so
      * the manager will be given access to the Manager view. 
      */
-public static void verifyManagerLogin(LoginView aView, ManagerView aMgrView, String aManagerTable, DBManager DBM, PreparedStatement ps, ResultSet rs) {
+public void verifyManagerLogin(LoginView aView, ManagerView aMgrView, String aManagerTable, DBManager DBM, PreparedStatement ps, ResultSet rs) {
         String aCustomerLogin = "SELECT * FROM " + aManagerTable + " WHERE USERNAME=? AND PASSWORD=?";
 
         try {
