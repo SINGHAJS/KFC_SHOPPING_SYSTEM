@@ -1,13 +1,20 @@
 ----------------------------------------------------------------
+<<<<<<< HEAD
 Sun Oct 17 23:00:41 NZDT 2021:
 Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017c-8db2-3d0f-000003cf3018 
 on database directory /Users/ajit_singh/Desktop/NetBeans Projects/Shopping_System/KFC_DB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@45ee12a7 
 Loaded from file:/Users/ajit_singh/Desktop/db-derby-10.14.2.0-bin/lib/derby.jar
+=======
+Tue Oct 12 20:25:00 NZDT 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017c-7363-e891-00000de41a88 
+on database directory C:\Users\singh\Documents\NetBeansProjects\Shopping_System\KFC_Inventory with class loader sun.misc.Launcher$AppClassLoader@5c647e05 
+Loaded from file:/C:/Users/singh/Documents/NetBeansProjects/Shopping_System/lib/derby.jar
+>>>>>>> 30f1f5b3c645aca1b83dd3cb365cf045692babbe
 java.vendor=Oracle Corporation
-java.runtime.version=15.0.2+7-27
-user.dir=/Users/ajit_singh/Desktop/NetBeans Projects/Shopping_System
-os.name=Mac OS X
-os.arch=x86_64
-os.version=10.16
+java.runtime.version=1.8.0_301-b09
+user.dir=C:\Users\singh\Documents\NetBeansProjects\Shopping_System
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

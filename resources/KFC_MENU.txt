@@ -1,0 +1,70 @@
+Buckets,Big Sharing Bucket,46.99
+Buckets,Sharing Bucket,31.99
+Buckets,XL Bucket,56.99
+Buckets,Party Pack,45.99
+Buckets,Family Feast,42.59
+Buckets,Dinner for 2,30.79
+Buckets,Wicked Meal,40.99
+Buckets,Colonels Dinner,29.99
+Buckets,8 Wicked Wings,15.79
+Buckets,12 Wicked Wings,18.99
+Buckets,20 Wicked Wings,30.99
+Buckets,Value Meal,22.99
+Individual Meals,H&S Boneless Lunch,7.50
+Individual Meals,H&S Boneless Box,10.99
+Individual Meals,H&S Boneless Snack Box,4.69
+Individual Meals,Deluxe Quarter Pack,17.69
+Individual Meals,Zinger Box Meal,15.99
+Individual Meals,Hot & Spicy Lunch,6.99
+Individual Meals,2pc Quarter Pack,12.39
+Individual Meals,Colonel Ultimate Burger Meal,16.59
+Individual Meals,3pc Quarter Pack,15.19
+Individual Meals,Snack Lunch,8.29
+Individual Meals,Colonels Lunch,7.19
+Individual Meals,Popcorn Chicken Lunch,8.19
+Individual Meals,Wicked Lunch, 7.39
+Individual Meals,Sliders Lunch,6.79
+Burgers,Tower Stacker Burger,12.49
+Burgers,Zinger Stacker,12.99
+Burgers,Zinger Burger,8.69
+Burgers,Colonel Burger,9.49
+Burgers,Tower Burger,9.99
+Burgers,Bacon Aioli Burger,10.99
+Burgers,Big Snack Burger,5.69
+Burgers,Veggie Burger,4.99
+Twisters & Salad,Supercharged Twister,9.29
+Twisters & Salad,Aioli Twister,9.29
+Twisters & Salad,Kentucky Mayo Twister,9.29
+Twisters & Salad,Shaker Salad,9.49
+Snacks,Snack Burger,3.99
+Snacks,Secret Recipe Chicken Tenders,5.79
+Snacks,Popcorn Chicken Snack Box,5.19
+Snacks,2 Secret Recipe Chicken Pieces,5
+Snacks,6 Chicken Nuggets, 5.99
+Snacks,Wicked Wings Snack Box,4.99
+Snacks,Mini Popcorn Chicken,4.19
+Snacks,Regular Popcorn Chicken,6.99
+Snacks,Secret Recipe Chicken Piece,3.79
+Snacks,3 Wicked Wings,5.99
+Snacks,8 Wicked Wings,15.79
+Snacks,12 Wicked Wings,18.99
+Sides,Large Chips,5.79
+Sides,Regular Chips,3.79
+Sides,Regular Potato & Gravy,3.79
+Sides,Large Potato & Gravy,5.79
+Sides,Regular Coleslaw,3.79
+Sides,Large Coleslaw,5.79
+Sides,Regular Gravy,3.79
+Sides,Large Gravy,5.79
+Sides,Bread Roll,1.69
+Sides,6 Bread Rolls,6.99
+Drinks & Desserts,Chocolate Mousse,4.29
+Drinks & Desserts,Strawberry Cheesecake,4.29
+Drinks & Desserts,Cookies & Cream Mousse,4.29
+Drinks & Desserts,1.5L Coke No Sugar,5.79
+Drinks & Desserts,1.5L Coke,5.79
+Drinks & Desserts,1.5L Sprite,5.79
+Drinks & Desserts,1.5L Vanilla Coke,5.79
+Drinks & Desserts,1.5L L&P,5.79
+Drinks & Desserts,1.5L Fanta,5.79
+Drinks & Desserts,1.5L Kiwi Blue Water,5.79
