@@ -12,4 +12,5 @@ public class BrowseData {
     int count = 0;
     Vector<String> categories = new Vector<String>();
     Vector<Products> items = new Vector<Products>();
+    Vector<String> cart = new Vector<String>();
 }

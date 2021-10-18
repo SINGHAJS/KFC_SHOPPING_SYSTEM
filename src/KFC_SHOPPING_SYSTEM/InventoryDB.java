@@ -45,7 +45,6 @@ public class InventoryDB {
                 String[] itemInfo = o.split(",");
                 Double price = Double.parseDouble(itemInfo[2]);
                 String sqlInsert = "INSERT INTO " + tableName + " VALUES ("+ count++ + ",'"+ itemInfo[0]+ "','" + itemInfo[1]+ "', "+price+")";
-                System.out.println(sqlInsert);
                db.getStatement().executeUpdate(sqlInsert);
             }
         }catch(SQLException e){
