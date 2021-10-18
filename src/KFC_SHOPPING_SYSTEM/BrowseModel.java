@@ -14,7 +14,7 @@ public class BrowseModel extends Observable{
     private TreeSet<String> treeSet;
     private Vector<String> v = new Vector<String>();
     private Vector<Products> i = new Vector<Products>();
-    private Vector<Products> cartItems = new Vector<Products>();
+    private Cart cart = new Cart();
     public BrowseModel(){
         db = new InventoryDB();
         db.createItemsTable();
@@ -38,5 +38,18 @@ public class BrowseModel extends Observable{
         data.adminFlag = true;
         this.setChanged();
         this.notifyObservers(this.data);
+    }
+    public void updateCart(){
+        data.count++;
+        this.setChanged();
+        this.notifyObservers(this.data);
+    }
+    public void cartList(){
+        data.cart = cart.returnCartItems();
+        this.setChanged();
+        this.notifyObservers(this.data);
+    }
+    public Cart getCart() {
+        return cart;
     }
 }
