@@ -43,7 +43,7 @@ public class BrowseView extends JFrame implements Observer {
         this.setVisible(true);
     }
 
-    public void itemsList(Vector<Products> ilist) {
+    public void itemsList(Vector<ProductItems> ilist) {
         getBrowsePanel().itemsList(ilist);
         this.add(getBrowsePanel());
         this.revalidate();
@@ -95,6 +95,7 @@ public class BrowseView extends JFrame implements Observer {
     public void addListSelectionListener(ListSelectionListener selectionListener) {
         getBrowsePanel().getCategoryList().addListSelectionListener(selectionListener);
         getBrowsePanel().getItemsList().addListSelectionListener(selectionListener);
+        //getBrowsePanel().getItemsList().getSelectionModel().addListSelectionListener(selectionListener);
 
     }
 

@@ -27,11 +27,11 @@ public class AdminView extends JFrame implements Observer{
     public AdminView( ){
         
     }
-    public static void main(String[] args) {
-        AdminView g = new AdminView();
-
-      g.showTable();
-    }
+//    public static void main(String[] args) {
+//        AdminView g = new AdminView();
+//
+//      g.showTable();
+//    }
     public void back(){
          headPanel.setBackground(Color.DARK_GRAY);
         headPanel.setBounds(0, 0, 1200, 30);

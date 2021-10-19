@@ -13,8 +13,8 @@ public class BrowseModel extends Observable{
     private BrowseData data = new BrowseData();
     private TreeSet<String> treeSet;
     private Vector<String> v = new Vector<String>();
-    private Vector<Products> i = new Vector<Products>();
-    private Cart cart = new Cart();
+    private Vector<ProductItems> i = new Vector<ProductItems>();
+    private CartList cart = new CartList();
     public BrowseModel(){
         db = new InventoryDB();
         db.createItemsTable();
@@ -70,7 +70,7 @@ this.setChanged();
         this.setChanged();
         this.notifyObservers(this.data);
     }
-    public Cart getCart() {
+    public CartList getCart() {
         return cart;
     }
 }

@@ -1,14 +1,14 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package KFC_SHOPPING_SYSTEM;
-
-import java.text.NumberFormat;
 
 /**
  *
- * @author Ajit Singh ID: 19070642
- * @author Rohit Singh ID: 17981754
- *
+ * @author singh
  */
-public class Products {
+abstract class Products {
 
     private String category, itemName;  //Decalaring variables with access modifiers
     private double price, quantity;
@@ -20,9 +20,6 @@ public class Products {
         this.quantity = 0;
     }
 
-    /*
-   getters and setters for variables in product class
-     */
     public String getCategory() {
         return category;
     }
@@ -54,17 +51,6 @@ public class Products {
     public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
-
-    /*
-        To string method to override when displaying a product
-        With formatting to include '$' in front of price
-     */
-    @Override
-    public String toString() {
-        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
-        String itemPrice = currencyFormat.format(getPrice());
-        String alignment = String.format("%-1.25s  %40.5s %n", getItemName(), itemPrice);
-        return alignment;
-
-    }
+    
+    
 }

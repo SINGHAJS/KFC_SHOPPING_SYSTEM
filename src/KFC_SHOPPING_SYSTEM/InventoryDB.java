@@ -67,14 +67,14 @@ public class InventoryDB {
     }
     public Vector getItems(String categoryName){
         ResultSet rs = null;
-        Vector<Products> items = new Vector<Products>();
+        Vector<ProductItems> items = new Vector<ProductItems>();
         try{
             String sqlQuery = "Select ITEM_NAME, ITEM_PRICE from " + tableName + " where CATEGORY='" + categoryName + "'";
             rs = db.getStatement().executeQuery(sqlQuery);
             while(rs.next()){
                 String iname = rs.getString("ITEM_NAME");
                 double price = rs.getDouble("ITEM_PRICE");
-                items.add(new Products(categoryName,iname,price));
+                items.add(new ProductItems(categoryName,iname,price));
             }
         }catch(SQLException e){
             Logger.getLogger(InventoryDB.class.getName()).log(Level.SEVERE, null, e);

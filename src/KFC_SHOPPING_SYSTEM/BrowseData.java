@@ -13,6 +13,6 @@ public class BrowseData {
     boolean itemListFlag = false;
     int count = 0;
     Vector<String> categories = new Vector<String>();
-    Vector<Products> items = new Vector<Products>();
+    Vector<ProductItems> items = new Vector<ProductItems>();
     Vector<String> cart = new Vector<String>();
 }

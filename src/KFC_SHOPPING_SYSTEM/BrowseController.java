@@ -29,7 +29,9 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
         String command = e.getActionCommand();
         switch (command){
             case "ADD ITEM TO CART":
-                    this.model.getCart().addItem((Products) this.view.getBrowsePanel().getItemsList().getSelectedValue(), 1);
+                //int row = this.view.getBrowsePanel().getItemsList().getSelectedRow();
+                //this.model.getCart().addItem((Products) this.view.getBrowsePanel().getItemsList().getModel().getValueAt(row, 0),1);
+                   this.model.getCart().addItem((ProductItems) this.view.getBrowsePanel().getItemsList().getSelectedValue(), 1);
                     System.out.println(this.model.getCart().toString());
                     this.model.updateCart();
                     this.view.getBrowsePanel().getItemsList().clearSelection();
