@@ -21,7 +21,6 @@
 *.DS_Store
 nbproject*
 build*
-KFC_DB_Ebd*
 *.xml
 *.mf
 *.properties
