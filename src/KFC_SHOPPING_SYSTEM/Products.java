@@ -63,7 +63,7 @@ public class Products {
     public String toString() {
         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
         String itemPrice = currencyFormat.format(getPrice());
-        String alignment = String.format("%-44s  %20s", getItemName().trim(), itemPrice.trim());
+        String alignment = String.format("%-1.25s  %40.5s %n", getItemName(), itemPrice);
         return alignment;
 
     }

@@ -59,7 +59,6 @@ public class BrowsePanel extends JPanel {
         categoryList.setForeground(Color.WHITE);
         categoryList.setBackground(Color.DARK_GRAY);
         categoryList.setSelectionBackground(Color.WHITE);
-
         categoryList.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         categoryJCP.setViewportView(this.categoryList);

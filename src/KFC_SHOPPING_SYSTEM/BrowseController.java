@@ -43,12 +43,10 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
         Object o = ex.getSource();
         if (ex.getValueIsAdjusting()){
             if (o.equals(this.view.getBrowsePanel().getCategoryList())){
-                System.out.println("cat");
                 String categoryName = this.view.getBrowsePanel().getCategoryList().getSelectedValue().toString();
                 System.out.println(categoryName);
                 this.model.itemsList(categoryName);
             }else if (o.equals(this.view.getBrowsePanel().getItemsList())){
-                System.out.println("inven");
                 this.view.getBrowsePanel().getAddButton().setEnabled(true);
             }
         }      
@@ -59,10 +57,13 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
         Object o = e.getSource();
         if (o.equals(this.view.getHeaderPanel().getBrowseLabel())) {
             System.out.println("switching panel to browse");
-            this.model.categoryList();
+            this.model.unsetCartFlag();
+            this.model.setCategoryFlag();
         } else if(o.equals(this.view.getHeaderPanel().getcLabel())){
+            if(this.model.getCart().getCartSize() != 0){
             System.out.println("switching panel to cart");
-            this.model.cartList();
+            this.model.unsetCategoryFlag();
+            this.model.setCartFlag();}
         } else if (o.equals(this.view.getHeaderPanel().getBackLabel())){
             System.out.println("Switching back");
             this.model.adminPage();

@@ -25,7 +25,28 @@ public class BrowseModel extends Observable{
         v.clear();        
         v.addAll(treeSet);
         data.categories = v;
+    }
+    public void setCategoryFlag(){
+        data.browseFlag = true;
+        categoryList();
+        data.items.clear();
         this.setChanged();
+        this.notifyObservers(this.data);
+    }
+    public void unsetCategoryFlag(){
+        data.browseFlag = false;
+        this.setChanged();
+        this.notifyObservers(this.data);
+    }
+    public void setCartFlag(){
+        data.cartFlag = true;
+        cartList();
+        this.setChanged();
+        this.notifyObservers(this.data);
+    }
+    public void unsetCartFlag(){
+        data.cartFlag = false;
+this.setChanged();
         this.notifyObservers(this.data);
     }
     public void itemsList(String categoryName){
