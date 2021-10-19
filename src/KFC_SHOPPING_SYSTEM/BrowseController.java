@@ -29,16 +29,34 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
+        int cartListRow = this.view.getCartPanel().getCartList().getSelectedRow();
+        int itemListRow = this.view.getBrowsePanel().getItemsList().getSelectedRow();
+        System.out.println(cartListRow);
         switch (command) {
             case "ADD ITEM TO CART":
-                int row = this.view.getBrowsePanel().getItemsList().getSelectedRow();
-                this.model.getCart().addItem(this.model.getItemsList(row), 1);
+
+                this.model.getCart().addItem(this.model.getItemsList(itemListRow), 1);
                 //this.model.getCart().addItem((ProductItems) this.view.getBrowsePanel().getItemsList().getValueAt(row, 0), row);
                 //   this.model.getCart().addItem((this.view.getBrowsePanel().getItemsList().getModel().getValueAt(row, 0),1)));
                 // this.model.getCart().addItem((ProductItems) this.view.getBrowsePanel().getItemsList().getSelectedValue(), 1);
                 this.model.updateCart();
                 this.view.getBrowsePanel().getItemsList().clearSelection();
-
+                break;
+            case "+":
+                this.model.getCart().addItem(this.model.getCart().getProduct(cartListRow), 1);
+                this.model.setCartFlag();
+                this.view.getCartPanel().getCartList().clearSelection();
+                ;
+                break;
+            case "-":
+                this.model.getCart().addItem(this.model.getCart().getProduct(cartListRow), -1);
+                this.model.setCartFlag();
+                this.view.getCartPanel().getCartList().clearSelection();
+                break;
+            case "Remove Item":
+                this.model.getCart().removeItem(itemListRow);
+                this.model.setCartFlag();
+                this.view.getCartPanel().getCartList().clearSelection();
                 break;
         }
     }
@@ -54,9 +72,18 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
                 System.out.println(categoryName);
                 this.model.itemsList(categoryName);
             } else if (o.equals(this.view.getBrowsePanel().getItemsList().getSelectionModel())) {
-
                 this.view.getBrowsePanel().getAddButton().setEnabled(true);
+            } else if (o.equals(this.view.getCartPanel().getCartList().getSelectionModel())) {
+                int cartListRow = this.view.getCartPanel().getCartList().getSelectedRow();
+                if (cartListRow >= 0) {
+                    this.view.getCartPanel().getPlusButton().setEnabled(true);
+                    this.view.getCartPanel().getRemoveButton().setEnabled(true);
+                    if (this.model.getCart().getProduct(cartListRow).getQuantity() > 1) {
+                        this.view.getCartPanel().getMinusButton().setEnabled(true);
+                    }
+                }
             }
+
         }
     }
 
@@ -66,6 +93,7 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
         if (o.equals(this.view.getHeaderPanel().getBrowseLabel())) {
             System.out.println("switching panel to browse");
             this.model.unsetCartFlag();
+            this.model.updateCart();
             this.model.setCategoryFlag();
         } else if (o.equals(this.view.getHeaderPanel().getcLabel())) {
             if (this.model.getCart().getCartSize() != 0) {

@@ -14,7 +14,7 @@ public class CartList extends Cart{
 
     //ArrayList which can store multiple Product objects 
     private final Vector<ProductItems> viewCart = new Vector<>();
-
+    private NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
     public CartList(){
         
     }
@@ -40,7 +40,7 @@ public class CartList extends Cart{
 
     @Override
     public void removeItem(int index) {
-        this.viewCart.remove(index);
+        this.viewCart.remove(index+1);
     }
     
     @Override
@@ -49,16 +49,16 @@ public class CartList extends Cart{
     }
 
     @Override
-    public double getUnitTotal() {
+    public String getUnitTotal() {
         double unitTotal = 0.0;
         for (ProductItems o : this.viewCart) {
             unitTotal += o.getPrice() * o.getQuantity();
         }
-        return unitTotal;
+        String totalPrice = currencyFormat.format(unitTotal);
+        return totalPrice;
     }
     public String getSubTotal(int index){
-        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
-        
+
        String itemPrice = currencyFormat.format(this.viewCart.get(index).getPrice() * getItemQuantity(index));
         return itemPrice;
     }
@@ -66,6 +66,13 @@ public class CartList extends Cart{
     @Override
     public void setCartQuantity(int index, double quantity) {
         this.viewCart.get(index).setQuantity(quantity);
+    }
+    public int getTotalQuantity(){
+        int totalQuantity = 0;
+        for (ProductItems o : this.viewCart) {
+            totalQuantity += o.getQuantity();
+        }
+        return totalQuantity;
     }
 
     @Override

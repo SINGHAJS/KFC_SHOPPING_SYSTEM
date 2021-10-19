@@ -18,7 +18,7 @@ public abstract class Cart {
 
     public abstract ProductItems getProduct(int index);
 
-    public abstract double getUnitTotal();
+    public abstract String getUnitTotal();
 
     public abstract void setCartQuantity(int index, double quantity);
 

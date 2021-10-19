@@ -64,7 +64,7 @@ this.setChanged();
         this.notifyObservers(this.data);
     }
     public void updateCart(){
-        data.count++;
+        data.count = cart.getTotalQuantity();
         this.setChanged();
         this.notifyObservers(this.data);
     }

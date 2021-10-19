@@ -90,13 +90,17 @@ public class BrowseView extends JFrame implements Observer {
 
     public void addActionListener(ActionListener actionListener) {
         getBrowsePanel().getAddButton().addActionListener(actionListener);
+        getCartPanel().getPlusButton().addActionListener(actionListener);
+         getCartPanel().getMinusButton().addActionListener(actionListener);
+          getCartPanel().getRemoveButton().addActionListener(actionListener);
+          
     }
 
     public void addListSelectionListener(ListSelectionListener selectionListener) {
         getBrowsePanel().getCategoryList().addListSelectionListener(selectionListener);
         //getBrowsePanel().getItemsList().addListSelectionListener(selectionListener);
         getBrowsePanel().getItemsList().getSelectionModel().addListSelectionListener(selectionListener);
-
+        getCartPanel().getCartList().getSelectionModel().addListSelectionListener(selectionListener);
     }
 
     @Override
@@ -106,13 +110,14 @@ public class BrowseView extends JFrame implements Observer {
                 this.browsePanel.setVisible(false);
                 this.cart(data.cart);
             } 
+        else if (data.count != 0) {
+                this.bucketCounter(data.count);
+            }
         if(data.browseFlag){
         if (!data.items.isEmpty()) {
             
             this.itemsList(data.items);
-            if (data.count != 0) {
-                this.bucketCounter(data.count);
-            }    
+               
         }else if (data.browseFlag) {
             this.cartPanel.setVisible(false);
             this.categoryList(data.categories);

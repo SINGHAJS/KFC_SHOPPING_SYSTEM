@@ -96,8 +96,10 @@ public class BrowsePanel extends JPanel {
         getAddButton().setBackground(Color.DARK_GRAY);
         getAddButton().setForeground(Color.WHITE);
         getAddButton().setEnabled(false);
+        
         itemsList.setModel(model);
         itemsList.getTableHeader().setReorderingAllowed(false);
+        itemsList.getTableHeader().setEnabled(false);
         model.addColumn("Item Name");
         model.addColumn("Price");
         Object rowData[] = new Object[2];
