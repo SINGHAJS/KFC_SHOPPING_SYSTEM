@@ -22,7 +22,9 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author singh
+ * @author Ajit Singh ID: 19070642
+ * @author Rohit Singh ID: 17981754
+ *
  */
 public class BrowsePanel extends JPanel {
 
@@ -44,14 +46,16 @@ public class BrowsePanel extends JPanel {
 
     private final JLabel chooseCategoryLabel = new JLabel("CHOOSE A CATEGORY: ");
     private final JLabel selectLabel = new JLabel("SELECT ITEM:");
-    
+
     private DefaultTableModel model = new DefaultTableModel();
+
     BrowsePanel() {
-        this.itemsList = new JTable(){ 
+        this.itemsList = new JTable() {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
-            }};
+            }
+        };
         this.setBackground(Color.WHITE);
         this.setBounds(0, 30, 1200, 770);
         this.setLayout(null);
@@ -96,14 +100,14 @@ public class BrowsePanel extends JPanel {
         getAddButton().setBackground(Color.DARK_GRAY);
         getAddButton().setForeground(Color.WHITE);
         getAddButton().setEnabled(false);
-        
+
         itemsList.setModel(model);
         itemsList.getTableHeader().setReorderingAllowed(false);
         itemsList.getTableHeader().setEnabled(false);
         model.addColumn("Item Name");
         model.addColumn("Price");
         Object rowData[] = new Object[2];
-        for (int i  = 0;i<iList.size();i++){
+        for (int i = 0; i < iList.size(); i++) {
             rowData[0] = iList.get(i).getItemName();
             rowData[1] = iList.get(i).getItemPrice();
             model.addRow(rowData);

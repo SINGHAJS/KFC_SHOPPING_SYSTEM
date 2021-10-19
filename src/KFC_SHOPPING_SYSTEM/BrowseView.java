@@ -11,7 +11,9 @@ import javax.swing.event.ListSelectionListener;
 
 /**
  *
- * @author singh
+ * @author Ajit Singh ID: 19070642
+ * @author Rohit Singh ID: 17981754
+ *
  */
 public class BrowseView extends JFrame implements Observer {
 
@@ -49,7 +51,7 @@ public class BrowseView extends JFrame implements Observer {
         this.revalidate();
         browsePanel.setVisible(true);
         browsePanel.repaint();
-         this.repaint();
+        this.repaint();
         this.setVisible(true);
     }
 
@@ -57,9 +59,9 @@ public class BrowseView extends JFrame implements Observer {
         getBrowsePanel().bucketCounter(count);
         this.add(getBrowsePanel());
         this.revalidate();
-         browsePanel.setVisible(true);
+        browsePanel.setVisible(true);
         browsePanel.repaint();
-         this.repaint();
+        this.repaint();
         this.setVisible(true);
     }
 
@@ -91,14 +93,13 @@ public class BrowseView extends JFrame implements Observer {
     public void addActionListener(ActionListener actionListener) {
         getBrowsePanel().getAddButton().addActionListener(actionListener);
         getCartPanel().getPlusButton().addActionListener(actionListener);
-         getCartPanel().getMinusButton().addActionListener(actionListener);
-          getCartPanel().getRemoveButton().addActionListener(actionListener);
-          
+        getCartPanel().getMinusButton().addActionListener(actionListener);
+        getCartPanel().getRemoveButton().addActionListener(actionListener);
+
     }
 
     public void addListSelectionListener(ListSelectionListener selectionListener) {
         getBrowsePanel().getCategoryList().addListSelectionListener(selectionListener);
-        //getBrowsePanel().getItemsList().addListSelectionListener(selectionListener);
         getBrowsePanel().getItemsList().getSelectionModel().addListSelectionListener(selectionListener);
         getCartPanel().getCartList().getSelectionModel().addListSelectionListener(selectionListener);
     }
@@ -106,31 +107,34 @@ public class BrowseView extends JFrame implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         BrowseData data = (BrowseData) arg;
-        if(data.cartFlag){
-                this.browsePanel.setVisible(false);
-                this.cart(data.cart);
-            } 
-        else if (data.count != 0) {
-                this.bucketCounter(data.count);
+        if (data.cartFlag) {
+            this.browsePanel.setVisible(false);
+            this.cart(data.cart);
+        } else if (data.count != 0) {
+            this.bucketCounter(data.count);
+        }
+        if (data.browseFlag) {
+            if (!data.items.isEmpty()) {
+
+                this.itemsList(data.items);
+
+            } else if (data.browseFlag) {
+                this.cartPanel.setVisible(false);
+                this.categoryList(data.categories);
             }
-        if(data.browseFlag){
-        if (!data.items.isEmpty()) {
-            
-            this.itemsList(data.items);
-               
-        }else if (data.browseFlag) {
-            this.cartPanel.setVisible(false);
-            this.categoryList(data.categories);
-        }}
-        
+        }
+
     }
+
     public BrowsePanel getBrowsePanel() {
         return browsePanel;
     }
+
     public CartPanel getCartPanel() {
         return cartPanel;
     }
-    public HeaderPanel getHeaderPanel(){
+
+    public HeaderPanel getHeaderPanel() {
         return headPanel;
     }
 

@@ -133,11 +133,10 @@ public class DBManager {
             System.out.println("Error");
         }
     }
-    
+
     /**
-     * 
-     * @param tableName 
-     * create "CUSTOMER" table
+     *
+     * @param tableName create "CUSTOMER" table
      */
     public void createCustomerTable(String tableName) {
         String createCustomerTable = "CREATE  TABLE " + tableName
@@ -159,9 +158,8 @@ public class DBManager {
     }
 
     /**
-     * 
-     * @param tableName 
-     * create "MANAGER" table
+     *
+     * @param tableName create "MANAGER" table
      */
     public void createManagerTable(String tableName) {
         String createCustomerTable = "CREATE  TABLE " + tableName

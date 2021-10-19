@@ -9,7 +9,6 @@ import java.awt.Font;
 import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -19,7 +18,9 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author singh
+ * @author Ajit Singh ID: 19070642
+ * @author Rohit Singh ID: 17981754
+ *
  */
 public class CartPanel extends JPanel {
 
@@ -33,43 +34,47 @@ public class CartPanel extends JPanel {
     private final JButton minusButton = new JButton("-");
     private final JButton removeButton = new JButton("Remove Item");
     private final JButton checkoutButton = new JButton();
+
     CartPanel() {
-        this.cartList = new JTable(){ 
+        this.cartList = new JTable() {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
-            }};
+            }
+        };
         this.setBackground(Color.WHITE);
         this.setBounds(0, 30, 1200, 770);
         this.setLayout(null);
     }
-     public static void main(String[] args) {
+
+    public static void main(String[] args) {
         BrowseView g = new BrowseView();
         CartList cart = new CartList();
-        
+
         g.cart(cart);
     }
+
     public void cart(CartList cart) {
         model.setRowCount(0);
         model.setColumnCount(0);
         myBucketLabel.setFont(new Font("", Font.BOLD, 25));
         myBucketLabel.setForeground(Color.BLACK);
         myBucketLabel.setBounds(50, 5, 300, 50);
-        
+
         selectItem.setFont(new Font("", Font.BOLD, 20));
         selectItem.setForeground(Color.BLACK);
         selectItem.setBounds(50, 540, 300, 50);
-        
+
         grandTotal.setText("TOTAL                     " + cart.getUnitTotal());
         grandTotal.setForeground(Color.BLACK);
         grandTotal.setBounds(830, 160, 300, 300);
-        
+
         checkoutButton.setText("Checkout              " + cart.getUnitTotal());
         checkoutButton.setBackground(Color.DARK_GRAY);
         checkoutButton.setForeground(Color.WHITE);
-        checkoutButton.setBounds(740,350,300,60);
+        checkoutButton.setBounds(740, 350, 300, 60);
         checkoutButton.setEnabled(false);
-                
+
         plusButton.setFont(new Font("", Font.BOLD, 20));
         plusButton.setBackground(Color.DARK_GRAY);
         plusButton.setForeground(Color.WHITE);
@@ -96,7 +101,7 @@ public class CartPanel extends JPanel {
         model.addColumn("Unit Price");
         model.addColumn("Sub-Total");
         Object rowData[] = new Object[4];
-        for (int i  = 0;i<cart.getCartSize();i++){
+        for (int i = 0; i < cart.getCartSize(); i++) {
             rowData[0] = cart.getProduct(i).getItemName();
             rowData[1] = cart.getItemQuantity(i);
             rowData[2] = cart.getProduct(i).getItemPrice();
@@ -108,7 +113,7 @@ public class CartPanel extends JPanel {
         cartList.getColumnModel().getColumn(3).setMaxWidth(70);
         cartList.setShowGrid(false);
         cartList.setAutoCreateRowSorter(true);
-        
+
         cartList.setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 15));
         cartList.setForeground(Color.WHITE);
         cartList.setBackground(Color.DARK_GRAY);
@@ -120,7 +125,7 @@ public class CartPanel extends JPanel {
         cartListJCP.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
         cartListJCP.setBounds(50, 50, 500, 500);
-        
+
         this.add(checkoutButton);
         this.add(grandTotal);
         this.add(selectItem);
@@ -130,17 +135,21 @@ public class CartPanel extends JPanel {
         this.add(removeButton);
         this.add(cartListJCP);
     }
+
     public JButton getPlusButton() {
         return plusButton;
     }
+
     public JButton getMinusButton() {
         return minusButton;
     }
+
     public JButton getRemoveButton() {
         return removeButton;
     }
-    public JTable getCartList(){
+
+    public JTable getCartList() {
         return cartList;
     }
-    
+
 }

@@ -9,7 +9,9 @@ import javax.swing.event.ListSelectionListener;
 
 /**
  *
- * @author singh
+ * @author Ajit Singh ID: 19070642
+ * @author Rohit Singh ID: 17981754
+ *
  */
 public class BrowseController implements ActionListener, MouseListener, ListSelectionListener {
 
@@ -34,11 +36,7 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
         System.out.println(cartListRow);
         switch (command) {
             case "ADD ITEM TO CART":
-
                 this.model.getCart().addItem(this.model.getItemsList(itemListRow), 1);
-                //this.model.getCart().addItem((ProductItems) this.view.getBrowsePanel().getItemsList().getValueAt(row, 0), row);
-                //   this.model.getCart().addItem((this.view.getBrowsePanel().getItemsList().getModel().getValueAt(row, 0),1)));
-                // this.model.getCart().addItem((ProductItems) this.view.getBrowsePanel().getItemsList().getSelectedValue(), 1);
                 this.model.updateCart();
                 this.view.getBrowsePanel().getItemsList().clearSelection();
                 break;
@@ -46,7 +44,6 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
                 this.model.getCart().addItem(this.model.getCart().getProduct(cartListRow), 1);
                 this.model.setCartFlag();
                 this.view.getCartPanel().getCartList().clearSelection();
-                ;
                 break;
             case "-":
                 this.model.getCart().addItem(this.model.getCart().getProduct(cartListRow), -1);

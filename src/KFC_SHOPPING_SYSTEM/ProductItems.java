@@ -8,24 +8,15 @@ import java.text.NumberFormat;
  * @author Rohit Singh ID: 17981754
  *
  */
-public class ProductItems extends Products{
-
+public class ProductItems extends Products {
 
     public ProductItems(String category, String itemName, double price) { //constructor to create product object
-        super(category,itemName,price);
-    }
-    public String getItemPrice(){
-        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
-       String itemPrice = currencyFormat.format(getPrice());
-        return itemPrice;
+        super(category, itemName, price);
     }
 
-    @Override
-    public String toString() {
-       NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
-       String itemPrice = currencyFormat.format(getPrice());
-//        String alignment = String.format("%-40s  %40s %n", getItemName(), itemPrice);
-//        return alignment;
-    return getItemName() + " " + itemPrice; 
+    public String getItemPrice() {
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
+        String itemPrice = currencyFormat.format(getPrice());
+        return itemPrice;
     }
 }
