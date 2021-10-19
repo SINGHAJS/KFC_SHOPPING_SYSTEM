@@ -1,5 +1,6 @@
 package KFC_SHOPPING_SYSTEM;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -54,6 +55,12 @@ public class CartList extends Cart{
             unitTotal += o.getPrice() * o.getQuantity();
         }
         return unitTotal;
+    }
+    public String getSubTotal(int index){
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
+        
+       String itemPrice = currencyFormat.format(this.viewCart.get(index).getPrice() * getItemQuantity(index));
+        return itemPrice;
     }
 
     @Override

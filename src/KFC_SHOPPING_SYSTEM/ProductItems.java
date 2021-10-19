@@ -14,18 +14,18 @@ public class ProductItems extends Products{
     public ProductItems(String category, String itemName, double price) { //constructor to create product object
         super(category,itemName,price);
     }
-
-    /*
-   getters and setters for variables in product class
-     */
-
+    public String getItemPrice(){
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
+       String itemPrice = currencyFormat.format(getPrice());
+        return itemPrice;
+    }
 
     @Override
     public String toString() {
-        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
-        String itemPrice = currencyFormat.format(getPrice());
-        String alignment = String.format("%-40s  %40s %n", getItemName(), itemPrice);
-        return alignment;
-
+       NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
+       String itemPrice = currencyFormat.format(getPrice());
+//        String alignment = String.format("%-40s  %40s %n", getItemName(), itemPrice);
+//        return alignment;
+    return getItemName() + " " + itemPrice; 
     }
 }

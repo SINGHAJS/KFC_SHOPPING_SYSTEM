@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
 /**
  *
  * @author singh
@@ -15,6 +16,7 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
     public BrowseModel model;
     public BrowseView view;
     public AdminView view2;
+
     public BrowseController(BrowseModel model, BrowseView view) {
         this.view = view;
         this.model = model;
@@ -27,33 +29,37 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
-        switch (command){
+        switch (command) {
             case "ADD ITEM TO CART":
-                //int row = this.view.getBrowsePanel().getItemsList().getSelectedRow();
-                //this.model.getCart().addItem((Products) this.view.getBrowsePanel().getItemsList().getModel().getValueAt(row, 0),1);
-                   this.model.getCart().addItem((ProductItems) this.view.getBrowsePanel().getItemsList().getSelectedValue(), 1);
-                    System.out.println(this.model.getCart().toString());
-                    this.model.updateCart();
-                    this.view.getBrowsePanel().getItemsList().clearSelection();
-                    
+                int row = this.view.getBrowsePanel().getItemsList().getSelectedRow();
+                this.model.getCart().addItem(this.model.getItemsList(row), 1);
+                //this.model.getCart().addItem((ProductItems) this.view.getBrowsePanel().getItemsList().getValueAt(row, 0), row);
+                //   this.model.getCart().addItem((this.view.getBrowsePanel().getItemsList().getModel().getValueAt(row, 0),1)));
+                // this.model.getCart().addItem((ProductItems) this.view.getBrowsePanel().getItemsList().getSelectedValue(), 1);
+                this.model.updateCart();
+                this.view.getBrowsePanel().getItemsList().clearSelection();
+
                 break;
         }
     }
 
     @Override
-    public void valueChanged(ListSelectionEvent ex) { 
+    public void valueChanged(ListSelectionEvent ex) {
         Object o = ex.getSource();
-        if (ex.getValueIsAdjusting()){
-            if (o.equals(this.view.getBrowsePanel().getCategoryList())){
+
+        if (ex.getValueIsAdjusting()) {
+            if (o.equals(this.view.getBrowsePanel().getCategoryList())) {
+
                 String categoryName = this.view.getBrowsePanel().getCategoryList().getSelectedValue().toString();
                 System.out.println(categoryName);
                 this.model.itemsList(categoryName);
-            }else if (o.equals(this.view.getBrowsePanel().getItemsList())){
+            } else if (o.equals(this.view.getBrowsePanel().getItemsList().getSelectionModel())) {
+
                 this.view.getBrowsePanel().getAddButton().setEnabled(true);
             }
-        }      
+        }
     }
-            
+
     @Override
     public void mouseClicked(MouseEvent e) {
         Object o = e.getSource();
@@ -61,12 +67,13 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
             System.out.println("switching panel to browse");
             this.model.unsetCartFlag();
             this.model.setCategoryFlag();
-        } else if(o.equals(this.view.getHeaderPanel().getcLabel())){
-            if(this.model.getCart().getCartSize() != 0){
-            System.out.println("switching panel to cart");
-            this.model.unsetCategoryFlag();
-            this.model.setCartFlag();}
-        } else if (o.equals(this.view.getHeaderPanel().getBackLabel())){
+        } else if (o.equals(this.view.getHeaderPanel().getcLabel())) {
+            if (this.model.getCart().getCartSize() != 0) {
+                System.out.println("switching panel to cart");
+                this.model.unsetCategoryFlag();
+                this.model.setCartFlag();
+            }
+        } else if (o.equals(this.view.getHeaderPanel().getBackLabel())) {
             System.out.println("Switching back");
             this.model.adminPage();
         }
@@ -75,12 +82,15 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
     @Override
     public void mousePressed(MouseEvent e) {
     }
+
     @Override
     public void mouseReleased(MouseEvent e) {
     }
+
     @Override
     public void mouseEntered(MouseEvent e) {
     }
+
     @Override
     public void mouseExited(MouseEvent e) {
     }

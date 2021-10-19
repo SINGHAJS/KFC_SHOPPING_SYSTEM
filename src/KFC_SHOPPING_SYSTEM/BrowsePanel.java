@@ -27,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
 public class BrowsePanel extends JPanel {
 
     private JList categoryList = new JList();
-    private JList itemsList = new JList();
+    private JTable itemsList;
     private JScrollPane categoryJCP = new JScrollPane();
     private JScrollPane itemsJCP = new JScrollPane();
 
@@ -45,27 +45,17 @@ public class BrowsePanel extends JPanel {
     private final JLabel chooseCategoryLabel = new JLabel("CHOOSE A CATEGORY: ");
     private final JLabel selectLabel = new JLabel("SELECT ITEM:");
     
-    //private DefaultTableModel model = new DefaultTableModel();
+    private DefaultTableModel model = new DefaultTableModel();
     BrowsePanel() {
+        this.itemsList = new JTable(){ 
+            @Override
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                return false;
+            }};
         this.setBackground(Color.WHITE);
         this.setBounds(0, 30, 1200, 770);
         this.setLayout(null);
     }
-//    public static void main(String[] args) {
-//        BrowseView g = new BrowseView();
-//        Vector<String> lists = new Vector<>();
-//        lists.add("fffffffff");
-//        lists.add("abcedefoeioiifg");
-//        g.getBrowsePanel().categoryList(lists);
-//        g.categoryList(lists);
-//        Vector<Products> i = new Vector<>();
-//        i.add(new Products("abc", "rohit", 9.99));
-//        i.add(new Products("abc", "rohit", 9.99));
-//        i.add(new Products("abc", "rohit", 9.99));
-//        
-//        g.itemsList(i);
-//    }
-    
 
     public void categoryList(Vector<String> cList) {
         chooseCategoryLabel.setFont(new Font("", Font.BOLD, 25));
@@ -91,6 +81,8 @@ public class BrowsePanel extends JPanel {
     }
 
     public void itemsList(Vector<ProductItems> iList) {
+        model.setRowCount(0);
+        model.setColumnCount(0);
         selectLabel.setFont(new Font("", Font.BOLD, 25));
         selectLabel.setForeground(Color.BLACK);
         selectLabel.setBounds(400, 5, 200, 50);
@@ -104,9 +96,19 @@ public class BrowsePanel extends JPanel {
         getAddButton().setBackground(Color.DARK_GRAY);
         getAddButton().setForeground(Color.WHITE);
         getAddButton().setEnabled(false);
-
-        itemsList.setListData(iList);
-      //  itemsList.setRowSelectionAllowed(true);
+        itemsList.setModel(model);
+        itemsList.getTableHeader().setReorderingAllowed(false);
+        model.addColumn("Item Name");
+        model.addColumn("Price");
+        Object rowData[] = new Object[2];
+        for (int i  = 0;i<iList.size();i++){
+            rowData[0] = iList.get(i).getItemName();
+            rowData[1] = iList.get(i).getItemPrice();
+            model.addRow(rowData);
+        }
+        itemsList.getColumnModel().getColumn(1).setMaxWidth(70);
+        itemsList.setShowGrid(false);
+        itemsList.setAutoCreateRowSorter(true);
         itemsList.setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 15));
         itemsList.setForeground(Color.WHITE);
         itemsList.setBackground(Color.DARK_GRAY);
@@ -144,7 +146,7 @@ public class BrowsePanel extends JPanel {
         return categoryList;
     }
 
-    public JList getItemsList() {
+    public JTable getItemsList() {
         return itemsList;
     }
 

@@ -63,7 +63,7 @@ public class BrowseView extends JFrame implements Observer {
         this.setVisible(true);
     }
 
-    public void cart(Vector<String> cart) {
+    public void cart(CartList cart) {
         this.getContentPane().removeAll();
         this.back();
         getCartPanel().cart(cart);
@@ -94,8 +94,8 @@ public class BrowseView extends JFrame implements Observer {
 
     public void addListSelectionListener(ListSelectionListener selectionListener) {
         getBrowsePanel().getCategoryList().addListSelectionListener(selectionListener);
-        getBrowsePanel().getItemsList().addListSelectionListener(selectionListener);
-        //getBrowsePanel().getItemsList().getSelectionModel().addListSelectionListener(selectionListener);
+        //getBrowsePanel().getItemsList().addListSelectionListener(selectionListener);
+        getBrowsePanel().getItemsList().getSelectionModel().addListSelectionListener(selectionListener);
 
     }
 
@@ -107,7 +107,6 @@ public class BrowseView extends JFrame implements Observer {
                 this.cart(data.cart);
             } 
         if(data.browseFlag){
-            System.out.println("fuck");
         if (!data.items.isEmpty()) {
             
             this.itemsList(data.items);

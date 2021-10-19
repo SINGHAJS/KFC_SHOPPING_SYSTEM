@@ -55,6 +55,9 @@ this.setChanged();
         this.setChanged();
         this.notifyObservers(this.data);
     }
+    public ProductItems getItemsList(int i){
+        return data.items.get(i);
+    }
     public void adminPage(){
         data.adminFlag = true;
         this.setChanged();
@@ -66,7 +69,7 @@ this.setChanged();
         this.notifyObservers(this.data);
     }
     public void cartList(){
-        data.cart = cart.returnCartItems();
+        data.cart = cart;
         this.setChanged();
         this.notifyObservers(this.data);
     }
