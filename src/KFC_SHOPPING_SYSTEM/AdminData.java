@@ -4,10 +4,12 @@
  */
 package KFC_SHOPPING_SYSTEM;
 
+import java.util.Vector;
+
 /**
  *
  * @author singh
  */
 public class AdminData {
-    boolean adminPage = false;
+    Vector<ProductItems> allItems = new Vector<ProductItems>();
 }

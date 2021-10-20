@@ -32,8 +32,7 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
         int cartListRow = this.view.getCartPanel().getCartList().getSelectedRow();
-        int itemListRow = this.view.getBrowsePanel().getItemsList().getSelectedRow();
-        System.out.println(cartListRow);
+        int itemListRow = this.view.getBrowsePanel().getItemsList().getSelectedRow();   
         switch (command) {
             case "ADD ITEM TO CART":
                 this.model.getCart().addItem(this.model.getItemsList(itemListRow), 1);
@@ -61,10 +60,8 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
     @Override
     public void valueChanged(ListSelectionEvent ex) {
         Object o = ex.getSource();
-
         if (ex.getValueIsAdjusting()) {
             if (o.equals(this.view.getBrowsePanel().getCategoryList())) {
-
                 String categoryName = this.view.getBrowsePanel().getCategoryList().getSelectedValue().toString();
                 System.out.println(categoryName);
                 this.model.itemsList(categoryName);

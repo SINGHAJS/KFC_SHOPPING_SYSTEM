@@ -10,10 +10,18 @@ import java.text.NumberFormat;
  */
 public class ProductItems extends Products {
 
-    public ProductItems(String category, String itemName, double price) { //constructor to create product object
+    private boolean available;
+    public ProductItems(String category, String itemName, double price, boolean available) { //constructor to create product object
         super(category, itemName, price);
+        this.available = available;
     }
-
+    public boolean isAvailable() {
+        return available;
+    }
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+    
     public String getItemPrice() {
         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
         String itemPrice = currencyFormat.format(getPrice());

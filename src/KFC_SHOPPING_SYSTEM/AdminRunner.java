@@ -13,9 +13,9 @@ public class AdminRunner {
         AdminView view = new AdminView();
         
         AdminModel model = new AdminModel();
-        
         AdminController controller = new AdminController(model,view);
         
         model.addObserver(view);
+        model.getAllItems();
     }
 }

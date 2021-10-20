@@ -100,7 +100,6 @@ public class BrowseView extends JFrame implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         BrowseData data = (BrowseData) arg;
-        System.out.println("ye");
         if (data.cartFlag) {
             this.browsePanel.setVisible(false);
             this.cart(data.cart);

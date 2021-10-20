@@ -30,7 +30,7 @@ public class InventoryDB {
         try {
             if (!db.checkTable(tableName)) {
                 db.getStatement().executeUpdate("CREATE TABLE " + tableName + "(ID INT, "
-                        + "CATEGORY VARCHAR(50),ITEM_NAME VARCHAR(50), ITEM_PRICE DOUBLE)");
+                        + "CATEGORY VARCHAR(50),ITEM_NAME VARCHAR(50), ITEM_PRICE DOUBLE, AVAILABILITY BOOLEAN)");
                 fillTable();
             }
             db.getStatement().close();
@@ -47,12 +47,13 @@ public class InventoryDB {
                 String[] itemInfo = o.split(",");
                 Double price = Double.parseDouble(itemInfo[2]);
                 //String sqlInsert = "INSERT INTO " + tableName + " VALUES (" + count++ + ",'" + itemInfo[0] + "','" + itemInfo[1] + "', " + price + ")";
-                String sqlInsert = "INSERT INTO " + tableName + " VALUES (?,?,?,?)";
+                String sqlInsert = "INSERT INTO " + tableName + " VALUES (?,?,?,?,?)";
                 PreparedStatement ps = this.db.getConnection().prepareStatement(sqlInsert);
                 ps.setInt(1, count ++);
                 ps.setString(2, itemInfo[0]);
                 ps.setString(3, itemInfo[1]);
                 ps.setDouble(4, price);
+                ps.setBoolean(5,true);
                 ps.executeUpdate();
                 //db.getStatement().executeUpdate(sqlInsert);
             }
@@ -81,22 +82,47 @@ public class InventoryDB {
         ResultSet rs = null;
         Vector<ProductItems> items = new Vector<ProductItems>();
         try {
-            String sqlQuery = "Select ITEM_NAME, ITEM_PRICE from " + tableName + " where CATEGORY='" + categoryName + "'";
+            String sqlQuery = "Select ITEM_NAME, ITEM_PRICE from " + tableName + " where (CATEGORY='" + categoryName +  "') AND (AVAILABILITY = true)";
             rs = db.getStatement().executeQuery(sqlQuery);
             while (rs.next()) {
                 String iname = rs.getString("ITEM_NAME");
                 double price = rs.getDouble("ITEM_PRICE");
-                items.add(new ProductItems(categoryName, iname, price));
+                items.add(new ProductItems(categoryName, iname, price,true));
             }
         } catch (SQLException e) {
             Logger.getLogger(InventoryDB.class.getName()).log(Level.SEVERE, null, e);
         }
         return items;
     }
+    public void editItem(int id, boolean b){
+         try {
+                String sqlInsert = "UPDATE " + tableName + " SET AVAILABILITY = ? WHERE ID = ?";
+                PreparedStatement ps = this.db.getConnection().prepareStatement(sqlInsert);
+                ps.setBoolean(1,b);
+                ps.setInt(2, id);
+                ps.executeUpdate();
+        }catch (SQLException e) {
+            Logger.getLogger(InventoryDB.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
+    }
     
     public Vector getEntireTable(){
         ResultSet rs = null;
         Vector<ProductItems> allItems = new Vector<ProductItems>();
+         try {
+            String sqlQuery = "Select ITEM_NAME, ITEM_PRICE , CATEGORY, AVAILABILITY from " + tableName;
+            rs = db.getStatement().executeQuery(sqlQuery);
+            while (rs.next()) {
+                String iname = rs.getString("ITEM_NAME");
+                double price = rs.getDouble("ITEM_PRICE");
+                String category = rs.getString("CATEGORY");
+                boolean getAvailable = rs.getBoolean("AVAILABILITY");
+                allItems.add(new ProductItems(category, iname, price,getAvailable));
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(InventoryDB.class.getName()).log(Level.SEVERE, null, e);
+        }
         return allItems;
     }
 }
