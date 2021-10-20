@@ -1,26 +1,161 @@
 ----------------------------------------------------------------
-Wed Oct 20 21:44:09 NZDT 2021:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017c-9cdf-40e4-0000094681d0 
-on database directory C:\Users\singh\Documents\NetBeansProjects\Shopping_System\KFC_DB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2ff4acd0 
-Loaded from file:/C:/Users/singh/Documents/NetBeansProjects/Shopping_System/lib/derby.jar
+Wed Oct 20 20:25:39 NZDT 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017c-9c97-62b6-00000416e4a8 
+on database directory /Users/ajit_singh/Desktop/NetBeans Projects/Shopping_System/KFC_DB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@45ee12a7 
+Loaded from file:/Users/ajit_singh/Desktop/NetBeans%20Projects/Shopping_System/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=15.0.2+7-27
-user.dir=C:\Users\singh\Documents\NetBeansProjects\Shopping_System
-os.name=Windows 10
-os.arch=amd64
-os.version=10.0
+user.dir=/Users/ajit_singh/Desktop/NetBeans Projects/Shopping_System
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.16
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Wed Oct 20 21:44:09 NZDT 2021:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 582f8014-017c-9cdf-40e4-0000094681d0 
-on database directory C:\Users\singh\Documents\NetBeansProjects\Shopping_System\KFC_Inventory with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2ff4acd0 
-Loaded from file:/C:/Users/singh/Documents/NetBeansProjects/Shopping_System/lib/derby.jar
-java.vendor=Oracle Corporation
-java.runtime.version=15.0.2+7-27
-user.dir=C:\Users\singh\Documents\NetBeansProjects\Shopping_System
-os.name=Windows 10
-os.arch=amd64
-os.version=10.0
-derby.system.home=null
-Database Class Loader started - derby.database.classpath=''
+Wed Oct 20 20:25:39 NZDT 2021 Thread[main,5,main] Cleanup action starting
+ERROR XBM0J: Directory /Users/ajit_singh/Desktop/NetBeans Projects/Shopping_System/KFC_Inventory already exists.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.services.monitor.StorageFactoryService$10.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.impl.services.monitor.StorageFactoryService.createServiceRoot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection$5.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at KFC_SHOPPING_SYSTEM.DBManager.establishConnection(DBManager.java:54)
+	at KFC_SHOPPING_SYSTEM.DBManager.<init>(DBManager.java:44)
+	at KFC_SHOPPING_SYSTEM.InventoryDB.<init>(InventoryDB.java:26)
+	at KFC_SHOPPING_SYSTEM.BrowseModel.<init>(BrowseModel.java:23)
+	at KFC_SHOPPING_SYSTEM.SystemController.<init>(SystemController.java:53)
+	at KFC_SHOPPING_SYSTEM.KFCSystemRunner.<init>(KFCSystemRunner.java:23)
+	at KFC_SHOPPING_SYSTEM.KFCSystemRunner.main(KFCSystemRunner.java:12)
+Cleanup action completed
+Wed Oct 20 20:25:39 NZDT 2021 Thread[main,5,main] Cleanup action starting
+java.sql.SQLException: Failed to create database 'KFC_Inventory', see the next exception for details.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.seeNextException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at KFC_SHOPPING_SYSTEM.DBManager.establishConnection(DBManager.java:54)
+	at KFC_SHOPPING_SYSTEM.DBManager.<init>(DBManager.java:44)
+	at KFC_SHOPPING_SYSTEM.InventoryDB.<init>(InventoryDB.java:26)
+	at KFC_SHOPPING_SYSTEM.BrowseModel.<init>(BrowseModel.java:23)
+	at KFC_SHOPPING_SYSTEM.SystemController.<init>(SystemController.java:53)
+	at KFC_SHOPPING_SYSTEM.KFCSystemRunner.<init>(KFCSystemRunner.java:23)
+	at KFC_SHOPPING_SYSTEM.KFCSystemRunner.main(KFCSystemRunner.java:12)
+Caused by: ERROR XJ041: Failed to create database 'KFC_Inventory', see the next exception for details.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	... 21 more
+Caused by: ERROR XBM0J: Directory /Users/ajit_singh/Desktop/NetBeans Projects/Shopping_System/KFC_Inventory already exists.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.services.monitor.StorageFactoryService$10.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.impl.services.monitor.StorageFactoryService.createServiceRoot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection$5.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createPersistentService(Unknown Source)
+	... 18 more
+============= begin nested exception, level (1) ===========
+java.sql.SQLException: Directory /Users/ajit_singh/Desktop/NetBeans Projects/Shopping_System/KFC_Inventory already exists.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.TransactionResourceImpl.wrapInSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.TransactionResourceImpl.handleException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at KFC_SHOPPING_SYSTEM.DBManager.establishConnection(DBManager.java:54)
+	at KFC_SHOPPING_SYSTEM.DBManager.<init>(DBManager.java:44)
+	at KFC_SHOPPING_SYSTEM.InventoryDB.<init>(InventoryDB.java:26)
+	at KFC_SHOPPING_SYSTEM.BrowseModel.<init>(BrowseModel.java:23)
+	at KFC_SHOPPING_SYSTEM.SystemController.<init>(SystemController.java:53)
+	at KFC_SHOPPING_SYSTEM.KFCSystemRunner.<init>(KFCSystemRunner.java:23)
+	at KFC_SHOPPING_SYSTEM.KFCSystemRunner.main(KFCSystemRunner.java:12)
+Caused by: ERROR XBM0J: Directory /Users/ajit_singh/Desktop/NetBeans Projects/Shopping_System/KFC_Inventory already exists.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.services.monitor.StorageFactoryService$10.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.impl.services.monitor.StorageFactoryService.createServiceRoot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection$5.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createPersistentService(Unknown Source)
+	... 18 more
+============= end nested exception, level (1) ===========
+============= begin nested exception, level (2) ===========
+ERROR XBM0J: Directory /Users/ajit_singh/Desktop/NetBeans Projects/Shopping_System/KFC_Inventory already exists.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.services.monitor.StorageFactoryService$10.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.impl.services.monitor.StorageFactoryService.createServiceRoot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection$5.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at KFC_SHOPPING_SYSTEM.DBManager.establishConnection(DBManager.java:54)
+	at KFC_SHOPPING_SYSTEM.DBManager.<init>(DBManager.java:44)
+	at KFC_SHOPPING_SYSTEM.InventoryDB.<init>(InventoryDB.java:26)
+	at KFC_SHOPPING_SYSTEM.BrowseModel.<init>(BrowseModel.java:23)
+	at KFC_SHOPPING_SYSTEM.SystemController.<init>(SystemController.java:53)
+	at KFC_SHOPPING_SYSTEM.KFCSystemRunner.<init>(KFCSystemRunner.java:23)
+	at KFC_SHOPPING_SYSTEM.KFCSystemRunner.main(KFCSystemRunner.java:12)
+============= end nested exception, level (2) ===========
+Cleanup action completed
