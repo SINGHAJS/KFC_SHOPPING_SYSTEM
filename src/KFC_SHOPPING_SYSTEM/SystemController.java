@@ -14,20 +14,22 @@ public class SystemController implements ActionListener {
     private SystemModel aModel;
     private LoginView aLoginPageView;
     private FAQPageView aFAQView;
-    private RegistrationView aRegView;
-    private ManagerView aMgrView;    
+    private RegistrationView aRegView;   
     private BrowseView aBrowseView;
     private BrowseModel aBrowseModel;
     private BrowseController controller;
+    private AdminView aAdminView;
+    private AdminModel aAdminModel;
+    private AdminController aAdminController;
     /**
      * @param aModel
      * @param aLoginPageView
      * @param aRegView
-     * @param aMgrView
      * @param aFAQView
-     * @param aHomeView
+     * @param aBrowseView
+     * @param aAdminView
      */
-    public SystemController(SystemModel aModel, LoginView aLoginPageView, RegistrationView aRegView, ManagerView aMgrView, FAQPageView aFAQView, BrowseView aBrowseView) {
+    public SystemController(SystemModel aModel, LoginView aLoginPageView, RegistrationView aRegView, AdminView aAdminView, FAQPageView aFAQView, BrowseView aBrowseView) {
         System.out.println("[KFC: CONTROLLER]");
         System.out.println("[CONTROLLER: ADDING MODEL]");
         this.aModel = aModel;
@@ -41,9 +43,12 @@ public class SystemController implements ActionListener {
         this.aRegView.addActionListener(this);
 
         System.out.println("[CONTROLLER: ADDING MANAGER PAGE VIEW]");
-        this.aMgrView = aMgrView;
-        this.aMgrView.addActionListener(this);
-
+        this.aAdminView = aAdminView;
+        this.aAdminModel = new AdminModel();
+        this.aAdminController = new AdminController(this.aAdminModel,this.aAdminView,this.aLoginPageView);
+        aAdminModel.addObserver(aAdminView);
+        this.aAdminModel.getAllItems();
+        
         System.out.println("[CONTROLLER: ADDING FAQ PAGE VIEW]");
         this.aFAQView = aFAQView;
         this.aFAQView.addActionListener(this);
@@ -51,7 +56,7 @@ public class SystemController implements ActionListener {
         System.out.println("[CONTROLLER: ADDING HOME PAGE VIEW]");
         this.aBrowseView = aBrowseView;
         this.aBrowseModel = new BrowseModel();
-        this.controller = new BrowseController(this.aBrowseModel,this.aBrowseView);
+        this.controller = new BrowseController(this.aBrowseModel,this.aBrowseView,this.aLoginPageView);
         aBrowseModel.addObserver(aBrowseView);        
     }
 
@@ -66,13 +71,13 @@ public class SystemController implements ActionListener {
         if (e.getSource() == aLoginPageView.aLoginButton) {
 
             System.out.println("[PERFORMING CUSTOMER LOGIN]");
-            this.aModel.performCustomerLogin(this.aLoginPageView, this.aBrowseView, this.aMgrView);
+            this.aModel.performCustomerLogin(this.aLoginPageView, this.aBrowseView, this.aAdminView);
 
         } //MANAGER LOGIN BUTTON----------------------------------------------------------        
         else if (e.getSource() == aLoginPageView.aManagerLoginButton) {
 
             System.out.println("[PERFORMING MANAGER LOGIN]");
-            this.aModel.performManagerLogin(this.aLoginPageView, this.aMgrView);
+            this.aModel.performManagerLogin(this.aLoginPageView, this.aAdminView);
 
         } //REGISTRATION BUTTON-----------------------------------------------------------        
         else if (e.getSource() == aLoginPageView.aRegistrationButton) {

@@ -27,7 +27,7 @@ public class CustomerRegistration {
      * @param DBM
      * @param URL
      * @param aView
-     * @param homeView
+     * @param aBrowseView
      *
      * Gets text from the swing components in the RegistrationView.java class
      * and check if the text matches the requirements. If so, add the details to
@@ -68,7 +68,7 @@ public class CustomerRegistration {
      *
      * @param aRegView
      * @param aView
-     * @param homeView
+     * @param aBrowseView
      *
      * Stores the user input of "Yes", "No" or "X" into an variable name "input"
      * uses input data to allow the log in to the home view from the

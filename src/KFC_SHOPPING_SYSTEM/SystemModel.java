@@ -30,10 +30,10 @@ public class SystemModel extends Observable {
 
     /**
      * @param aView
-     * @param aHomeView
-     * @param aMgrView
+     * @param aBrowseView
+     * @param aAdminView
      */
-    public void performCustomerLogin(LoginView aView, BrowseView aBrowseView, ManagerView aMgrView) {
+    public void performCustomerLogin(LoginView aView, BrowseView aBrowseView, AdminView aAdminView) {
         this.DBM = new DBManager(URL);             
         CustomerLogin.verifyCustomerLogin(aView, aBrowseView, aCustomerTable, DBM, ps, rs);
     }
@@ -42,7 +42,7 @@ public class SystemModel extends Observable {
     /**
      * @param aRegView
      * @param aView
-     * @param aHomeView
+     * @param aBrowseView
      */
     public void createNewCustomerAccount(RegistrationView aRegView, LoginView aView, BrowseView aBrowseView) {        
         CustomerRegistration.aNewCustomer(aRegView, aCustomerTable, DBM, URL, aView, aBrowseView);
@@ -51,11 +51,11 @@ public class SystemModel extends Observable {
 //MANAGER-----------------------------------------------------------------------  
     /**
      * @param aView
-     * @param aMgrView
+     * @param aAdminView
      */
-    public void performManagerLogin(LoginView aView, ManagerView aMgrView) {
+    public void performManagerLogin(LoginView aView, AdminView aAdminView) {
         this.DBM = new DBManager(URL);          
-        ManagerLogin.verifyManagerLogin(aView, aMgrView, aManagerTable, DBM, ps, rs);
+        ManagerLogin.verifyManagerLogin(aView, aAdminView, aManagerTable, DBM, ps, rs);
 
     }
 

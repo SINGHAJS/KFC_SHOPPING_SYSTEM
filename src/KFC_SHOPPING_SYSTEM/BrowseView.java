@@ -27,7 +27,7 @@ public class BrowseView extends JFrame implements Observer {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setLayout(null);
-        this.setVisible(true);
+        this.setVisible(false);
         browsePanel = new BrowsePanel();
         cartPanel = new CartPanel();
         headPanel = new HeaderPanel();

@@ -2,6 +2,7 @@ package KFC_SHOPPING_SYSTEM;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Vector;
@@ -82,7 +83,7 @@ public class AdminView extends JFrame implements Observer {
         headerPanel.add(backLabel);
         this.add(backPanel); //putting component in frame
         this.add(headerPanel);
-        this.setVisible(true);
+        this.setVisible(false);
     }
 
     public void fillTable(Vector<ProductItems> product) { //fill table fills the JTable with entities from DB but seperating the input object to its right cells
@@ -132,7 +133,9 @@ public class AdminView extends JFrame implements Observer {
     public void addListSelectionListener(ListSelectionListener selectionListener) { //adds listener to the table
         editor.getSelectionModel().addListSelectionListener(selectionListener);
     }
-
+    public void addMouseListener(MouseListener listener){
+        getBackLabel().addMouseListener(listener);
+    }
     @Override
     public void update(Observable o, Object arg) { //updates table view
         AdminData data = (AdminData) arg;

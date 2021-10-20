@@ -15,7 +15,7 @@ public class CustomerLogin {
     /**
      * 
      * @param aView
-     * @param aHomeView
+     * @param aBrowseView
      * @param aCustomerTable
      * @param DBM
      * @param ps

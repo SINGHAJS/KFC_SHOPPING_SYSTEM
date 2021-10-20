@@ -17,12 +17,11 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
 
     public BrowseModel model;
     public BrowseView view;
-    public AdminView view2;
-
-    public BrowseController(BrowseModel model, BrowseView view) {
+    public LoginView upperView;
+    public BrowseController(BrowseModel model, BrowseView view, LoginView upperView) {
         this.view = view;
         this.model = model;
-        //view2 = new AdminView();
+        this.upperView = upperView;
         this.view.addListSelectionListener(this);
         this.view.addActionListener(this);
         this.view.addMouseListener(this);
@@ -97,6 +96,8 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
             }
         } else if (o.equals(this.view.getHeaderPanel().getBackLabel())) {
             System.out.println("Switching back");
+            this.upperView.aLoginPageFrame.setVisible(true);
+            this.view.setVisible(false);
         }
     }
 //abstract methods for mouselistener required but not used

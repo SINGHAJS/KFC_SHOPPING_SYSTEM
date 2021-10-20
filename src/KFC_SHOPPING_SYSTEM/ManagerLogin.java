@@ -17,7 +17,7 @@ public class ManagerLogin {
     /**
      * 
      * @param aView
-     * @param aMgrView
+     * @param aAdminView
      * @param aManagerTable
      * @param DBM
      * @param ps
@@ -26,7 +26,7 @@ public class ManagerLogin {
      * verify the manager login, if the manager data exists in the database, if so
      * the manager will be given access to the Manager view. 
      */
-public static void verifyManagerLogin(LoginView aView, ManagerView aMgrView, String aManagerTable, DBManager DBM, PreparedStatement ps, ResultSet rs) {
+public static void verifyManagerLogin(LoginView aView, AdminView aAdminView, String aManagerTable, DBManager DBM, PreparedStatement ps, ResultSet rs) {
         String aCustomerLogin = "SELECT * FROM " + aManagerTable + " WHERE USERNAME=? AND PASSWORD=?";
 
         try {
@@ -38,7 +38,7 @@ public static void verifyManagerLogin(LoginView aView, ManagerView aMgrView, Str
             if (rs.next()) {
                 JOptionPane.showMessageDialog(aView.aLoginPageFrame, "WELCOME MANAGER TO THE KFC SYSTEM", "MANAGER LOGIN SUCCESSFUL", JOptionPane.INFORMATION_MESSAGE);
                 aView.aLoginPageFrame.setVisible(false);
-                aMgrView.aManagerFrame.setVisible(true);
+                aAdminView.setVisible(true);
             } 
             else {
                 JOptionPane.showMessageDialog(aView.aLoginPageFrame, "PLEASE MAKE SURE YOU ARE AN EXISTING MANAGER AND HAVE ENTERED CORRECT INFORMATION", "MANAGER LOGIN UNSUCCESSFUL", JOptionPane.INFORMATION_MESSAGE);                

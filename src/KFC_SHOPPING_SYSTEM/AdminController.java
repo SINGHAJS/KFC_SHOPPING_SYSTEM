@@ -15,11 +15,14 @@ public class AdminController implements ListSelectionListener, MouseListener {
 
     public AdminModel model;
     public AdminView view;
-
-    public AdminController(AdminModel model, AdminView view) {
+    public LoginView upperView;
+    
+    public AdminController(AdminModel model, AdminView view,LoginView upperView) {
         this.model = model;
         this.view = view;
+        this.upperView = upperView;
         this.view.addListSelectionListener(this);
+        this.view.addMouseListener(this);
     }
 
     @Override
@@ -35,7 +38,11 @@ public class AdminController implements ListSelectionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-       
+       Object o = e.getSource();
+       if(o.equals(this.view.getBackLabel())){
+            this.upperView.aLoginPageFrame.setVisible(true);
+            this.view.setVisible(false);
+       }
     }
 
     @Override
