@@ -83,7 +83,6 @@ public class AdminView extends JFrame implements Observer {
         this.add(backPanel); //putting component in frame
         this.add(headerPanel);
         this.setVisible(true);
-
     }
 
     public void fillTable(Vector<ProductItems> product) { //fill table fills the JTable with entities from DB but seperating the input object to its right cells

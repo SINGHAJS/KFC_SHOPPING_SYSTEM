@@ -70,6 +70,8 @@ public class File_IO {
 
     /**
      * @param aFAQView
+     * This method is used to read the Store FAQ file and display the FAQ file
+     * to the JTextArea on the FAQ View.
      */
     public static void readFAQFile(FAQPageView aFAQView, String FAQFile) {
         try {

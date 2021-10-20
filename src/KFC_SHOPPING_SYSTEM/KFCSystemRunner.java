@@ -3,6 +3,7 @@ package KFC_SHOPPING_SYSTEM;
 /**
  *
  * @author Ajit Singh ID: 19070642
+ * @author Rohit Singh ID: 17981754
  *
  */
 public class KFCSystemRunner {
@@ -15,8 +16,7 @@ public class KFCSystemRunner {
         LoginView aLoginPageView = new LoginView();
         RegistrationView aRegView = new RegistrationView();
         ManagerView aMgrView = new ManagerView();
-        FAQPageView aFAQView = new FAQPageView();
-        HomeView aHomeView = new HomeView();
+        FAQPageView aFAQView = new FAQPageView();        
         BrowseView aBrowseView = new BrowseView();
         
         SystemModel Model = new SystemModel();

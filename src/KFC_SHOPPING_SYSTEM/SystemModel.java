@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 /**
  *
  * @author Ajit Singh ID: 19070642
+ * @author Rohit Singh ID: 17981754
+ *
  */
 public class SystemModel extends Observable {
 
