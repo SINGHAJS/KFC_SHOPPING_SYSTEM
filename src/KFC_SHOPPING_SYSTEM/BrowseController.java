@@ -22,7 +22,7 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
     public BrowseController(BrowseModel model, BrowseView view) {
         this.view = view;
         this.model = model;
-        view2 = new AdminView();
+        //view2 = new AdminView();
         this.view.addListSelectionListener(this);
         this.view.addActionListener(this);
         this.view.addMouseListener(this);
@@ -51,7 +51,7 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
                 this.view.getCartPanel().getCartList().clearSelection();
                 break;
             case "Remove Item":
-                this.model.getCart().removeItem(itemListRow);
+                this.model.getCart().removeItem(cartListRow);
                 this.model.setCartFlag();
                 this.view.getCartPanel().getCartList().clearSelection();
                 break;

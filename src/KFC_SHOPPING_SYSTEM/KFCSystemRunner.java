@@ -17,9 +17,10 @@ public class KFCSystemRunner {
         ManagerView aMgrView = new ManagerView();
         FAQPageView aFAQView = new FAQPageView();
         HomeView aHomeView = new HomeView();
+        BrowseView aBrowseView = new BrowseView();
         
         SystemModel Model = new SystemModel();
-        SystemController Controller = new SystemController(Model, aLoginPageView, aRegView, aMgrView, aFAQView, aHomeView);
+        SystemController Controller = new SystemController(Model, aLoginPageView, aRegView, aMgrView, aFAQView, aBrowseView);
 
     }
 }

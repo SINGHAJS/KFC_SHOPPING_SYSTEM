@@ -1,5 +1,6 @@
 package KFC_SHOPPING_SYSTEM;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -27,7 +28,6 @@ public class InventoryDB {
 
     public void createItemsTable() {
         try {
-
             if (!db.checkTable(tableName)) {
                 db.getStatement().executeUpdate("CREATE TABLE " + tableName + "(ID INT, "
                         + "CATEGORY VARCHAR(50),ITEM_NAME VARCHAR(50), ITEM_PRICE DOUBLE)");
@@ -42,14 +42,21 @@ public class InventoryDB {
     public void fillTable() {
         int count = 1;
         try {
-
             list = File_IO.readFile(KFC_MENU);
             for (String o : list) {
                 String[] itemInfo = o.split(",");
                 Double price = Double.parseDouble(itemInfo[2]);
-                String sqlInsert = "INSERT INTO " + tableName + " VALUES (" + count++ + ",'" + itemInfo[0] + "','" + itemInfo[1] + "', " + price + ")";
-                db.getStatement().executeUpdate(sqlInsert);
+                //String sqlInsert = "INSERT INTO " + tableName + " VALUES (" + count++ + ",'" + itemInfo[0] + "','" + itemInfo[1] + "', " + price + ")";
+                String sqlInsert = "INSERT INTO " + tableName + " VALUES (?,?,?,?)";
+                PreparedStatement ps = this.db.getConnection().prepareStatement(sqlInsert);
+                ps.setInt(1, count ++);
+                ps.setString(2, itemInfo[0]);
+                ps.setString(3, itemInfo[1]);
+                ps.setDouble(4, price);
+                ps.executeUpdate();
+                //db.getStatement().executeUpdate(sqlInsert);
             }
+            System.out.println("Table Filled");
         } catch (SQLException e) {
             Logger.getLogger(InventoryDB.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -86,5 +93,10 @@ public class InventoryDB {
         }
         return items;
     }
-
+    
+    public Vector getEntireTable(){
+        ResultSet rs = null;
+        Vector<ProductItems> allItems = new Vector<ProductItems>();
+        return allItems;
+    }
 }

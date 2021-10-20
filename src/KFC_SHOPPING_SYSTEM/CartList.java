@@ -42,7 +42,7 @@ public class CartList extends Cart {
 
     @Override
     public void removeItem(int index) {
-        this.viewCart.remove(index + 1);
+        this.viewCart.remove(this.viewCart.get(index));
     }
 
     @Override

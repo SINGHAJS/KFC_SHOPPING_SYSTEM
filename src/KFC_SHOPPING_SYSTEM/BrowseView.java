@@ -38,21 +38,18 @@ public class BrowseView extends JFrame implements Observer {
         this.getContentPane().removeAll();
         this.back();
         getBrowsePanel().categoryList(clist);
+        getBrowsePanel().setVisible(true);
         this.add(getBrowsePanel());
         this.revalidate();
         this.repaint();
-        getBrowsePanel().setVisible(true);
-        this.setVisible(true);
     }
 
     public void itemsList(Vector<ProductItems> ilist) {
         getBrowsePanel().itemsList(ilist);
+        browsePanel.setVisible(true);
         this.add(getBrowsePanel());
         this.revalidate();
-        browsePanel.setVisible(true);
-        browsePanel.repaint();
         this.repaint();
-        this.setVisible(true);
     }
 
     public void bucketCounter(int count) {
@@ -62,26 +59,22 @@ public class BrowseView extends JFrame implements Observer {
         browsePanel.setVisible(true);
         browsePanel.repaint();
         this.repaint();
-        this.setVisible(true);
     }
 
     public void cart(CartList cart) {
         this.getContentPane().removeAll();
         this.back();
         getCartPanel().cart(cart);
+        cartPanel.setVisible(true);
         this.add(getCartPanel());
         this.revalidate();
-        cartPanel.setVisible(true);
-        cartPanel.repaint();
         this.repaint();
-        this.setVisible(true);
     }
 
     public void back() {
         getHeaderPanel().back();
         this.add(headPanel);
         this.repaint();
-        this.setVisible(true);
     }
 
     public void addMouseListener(MouseListener mouseListener) {
@@ -107,6 +100,7 @@ public class BrowseView extends JFrame implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         BrowseData data = (BrowseData) arg;
+        System.out.println("ye");
         if (data.cartFlag) {
             this.browsePanel.setVisible(false);
             this.cart(data.cart);
@@ -117,13 +111,11 @@ public class BrowseView extends JFrame implements Observer {
             if (!data.items.isEmpty()) {
 
                 this.itemsList(data.items);
-
             } else if (data.browseFlag) {
                 this.cartPanel.setVisible(false);
                 this.categoryList(data.categories);
             }
         }
-
     }
 
     public BrowsePanel getBrowsePanel() {

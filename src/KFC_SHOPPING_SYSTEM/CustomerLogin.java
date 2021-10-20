@@ -25,7 +25,7 @@ public class CustomerLogin {
      * to the customer to view the KFC home page
      * 
      */
-    public static void verifyCustomerLogin(LoginView aView, HomeView aHomeView, String aCustomerTable, DBManager DBM, PreparedStatement ps, ResultSet rs) {
+    public static void verifyCustomerLogin(LoginView aView, BrowseView aBrowseView, String aCustomerTable, DBManager DBM, PreparedStatement ps, ResultSet rs) {
         String aCustomerLogin = "SELECT * FROM " + aCustomerTable + " WHERE USERNAME=? AND PASSWORD=?";
 
         try {
@@ -37,7 +37,7 @@ public class CustomerLogin {
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "LOGIN SUCCESSFUL");               
                 aView.aLoginPageFrame.setVisible(false);
-                aHomeView.aHomeFrame.setVisible(true);                
+                aBrowseView.setVisible(true);
                 
             } else {
                 JOptionPane.showMessageDialog(aView.aLoginPageFrame, "PLEASE MAKE SURE YOU HAVE AN EXISTING ACCOUNT OR ENTERED VALID INFORMATION", "LOGIN UNSUCCESSFUL", JOptionPane.INFORMATION_MESSAGE);

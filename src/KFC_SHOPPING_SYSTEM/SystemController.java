@@ -14,8 +14,10 @@ public class SystemController implements ActionListener {
     private FAQPageView aFAQView;
     private RegistrationView aRegView;
     private ManagerView aMgrView;
-    private HomeView aHomeView;
-
+    //private HomeView aHomeView;
+    private BrowseView aBrowseView;
+    private BrowseModel aBrowseModel;
+    private BrowseController controller;
     /**
      * @param aModel
      * @param aLoginPageView
@@ -24,7 +26,7 @@ public class SystemController implements ActionListener {
      * @param aFAQView
      * @param aHomeView
      */
-    public SystemController(SystemModel aModel, LoginView aLoginPageView, RegistrationView aRegView, ManagerView aMgrView, FAQPageView aFAQView, HomeView aHomeView) {
+    public SystemController(SystemModel aModel, LoginView aLoginPageView, RegistrationView aRegView, ManagerView aMgrView, FAQPageView aFAQView, BrowseView aBrowseView) {
         System.out.println("[KFC: CONTROLLER]");
         System.out.println("[CONTROLLER: ADDING MODEL]");
         this.aModel = aModel;
@@ -46,8 +48,11 @@ public class SystemController implements ActionListener {
         this.aFAQView.addActionListener(this);
 
         System.out.println("[CONTROLLER: ADDING HOME PAGE VIEW]");
-        this.aHomeView = aHomeView;
-        this.aHomeView.addActionListener(this);
+        this.aBrowseView = aBrowseView;
+        this.aBrowseModel = new BrowseModel();
+        this.controller = new BrowseController(this.aBrowseModel,this.aBrowseView);
+        aBrowseModel.addObserver(aBrowseView);
+        //this.aHomeView.addActionListener(this);
 
     }
 
@@ -62,7 +67,7 @@ public class SystemController implements ActionListener {
         if (e.getSource() == aLoginPageView.aLoginButton) {
 
             System.out.println("[PERFORMING CUSTOMER LOGIN]");
-            this.aModel.performCustomerLogin(this.aLoginPageView, this.aHomeView, this.aMgrView);
+            this.aModel.performCustomerLogin(this.aLoginPageView, this.aBrowseView, this.aMgrView);
 
         } //MANAGER LOGIN BUTTON----------------------------------------------------------        
         else if (e.getSource() == aLoginPageView.aManagerLoginButton) {
@@ -88,7 +93,7 @@ public class SystemController implements ActionListener {
         else if (e.getSource() == this.aRegView.aRegSubmitButton) {
 
             System.out.println("[ATTEMPTING REGISTRATION FOR NEW USER]");
-            this.aModel.createNewCustomerAccount(this.aRegView, this.aLoginPageView, this.aHomeView);
+            this.aModel.createNewCustomerAccount(this.aRegView, this.aLoginPageView, this.aBrowseView);
 
         } //FAQ BUTTON--------------------------------------------------------------------        
         else if (e.getSource() == this.aLoginPageView.aFAQButton) {

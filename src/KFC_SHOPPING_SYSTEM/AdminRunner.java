@@ -9,5 +9,13 @@ package KFC_SHOPPING_SYSTEM;
  * @author singh
  */
 public class AdminRunner {
-    
+    public static void main(String[] args) {
+        AdminView view = new AdminView();
+        
+        AdminModel model = new AdminModel();
+        
+        AdminController controller = new AdminController(model,view);
+        
+        model.addObserver(view);
+    }
 }

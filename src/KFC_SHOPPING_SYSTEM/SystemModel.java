@@ -31,9 +31,9 @@ public class SystemModel extends Observable {
      * @param aHomeView
      * @param aMgrView
      */
-    public void performCustomerLogin(LoginView aView, HomeView aHomeView, ManagerView aMgrView) {
+    public void performCustomerLogin(LoginView aView, BrowseView aBrowseView, ManagerView aMgrView) {
         this.DBM = new DBManager(URL);             
-        CustomerLogin.verifyCustomerLogin(aView, aHomeView, aCustomerTable, DBM, ps, rs);
+        CustomerLogin.verifyCustomerLogin(aView, aBrowseView, aCustomerTable, DBM, ps, rs);
     }
 
 //CUSTOMER REGISTRATION---------------------------------------------------------
@@ -42,8 +42,8 @@ public class SystemModel extends Observable {
      * @param aView
      * @param aHomeView
      */
-    public void createNewCustomerAccount(RegistrationView aRegView, LoginView aView, HomeView aHomeView) {        
-        CustomerRegistration.aNewCustomer(aRegView, aCustomerTable, DBM, URL, aView, aHomeView);
+    public void createNewCustomerAccount(RegistrationView aRegView, LoginView aView, BrowseView aBrowseView) {        
+        CustomerRegistration.aNewCustomer(aRegView, aCustomerTable, DBM, URL, aView, aBrowseView);
     }
 
 //MANAGER-----------------------------------------------------------------------  
