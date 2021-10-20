@@ -15,14 +15,14 @@ public class ProductItems extends Products {
         super(category, itemName, price);
         this.available = available;
     }
-    public boolean isAvailable() {
+    public boolean isAvailable() {//returns availability of item
         return available;
     }
-    public void setAvailable(boolean available) {
+    public void setAvailable(boolean available) { //sets availability of object(item)
         this.available = available;
     }
     
-    public String getItemPrice() {
+    public String getItemPrice() {//returns a string of price with $ sign included
         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
         String itemPrice = currencyFormat.format(getPrice());
         return itemPrice;

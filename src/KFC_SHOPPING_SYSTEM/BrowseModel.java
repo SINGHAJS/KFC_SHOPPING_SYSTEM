@@ -15,8 +15,8 @@ public class BrowseModel extends Observable {
     private final InventoryDB db;
     private BrowseData data = new BrowseData();
     private TreeSet<String> treeSet;
-    private Vector<String> v = new Vector<String>();
-    private Vector<ProductItems> i = new Vector<ProductItems>();
+    private Vector<String> categoryHolder = new Vector<String>();
+    private Vector<ProductItems> itemHolder = new Vector<ProductItems>();
     private CartList cart = new CartList();
 
     public BrowseModel() {
@@ -24,15 +24,15 @@ public class BrowseModel extends Observable {
         db.createItemsTable();
     }
 
-    public void categoryList() {
-        v = this.db.getCategory();
-        treeSet = new TreeSet(v);
-        v.clear();
-        v.addAll(treeSet);
-        data.categories = v;
+    public void categoryList() { //fills data with list of categories from DB and uses tree set to remove duplicate category name
+        categoryHolder = this.db.getCategory();
+        treeSet = new TreeSet(categoryHolder);
+        categoryHolder.clear();
+        categoryHolder.addAll(treeSet);
+        data.categories = categoryHolder;
     }
 
-    public void setCategoryFlag() {
+    public void setCategoryFlag() {//flag to update view with new category list
         data.browseFlag = true;
         categoryList();
         data.items.clear();
@@ -40,55 +40,49 @@ public class BrowseModel extends Observable {
         this.notifyObservers(this.data);
     }
 
-    public void unsetCategoryFlag() {
+    public void unsetCategoryFlag() {//disables flag
         data.browseFlag = false;
         this.setChanged();
         this.notifyObservers(this.data);
     }
 
-    public void setCartFlag() {
+    public void setCartFlag() {//flag to update view with new cart List
         data.cartFlag = true;
         cartList();
         this.setChanged();
         this.notifyObservers(this.data);
     }
 
-    public void unsetCartFlag() {
+    public void unsetCartFlag() {//disables flag
         data.cartFlag = false;
         this.setChanged();
         this.notifyObservers(this.data);
     }
 
-    public void itemsList(String categoryName) {
-        i = this.db.getItems(categoryName);
-        data.items = i;
+    public void itemsList(String categoryName) {//using input category it fills the data.items with item from the categroy
+        itemHolder = this.db.getItems(categoryName);
+        data.items = itemHolder;
         this.setChanged();
         this.notifyObservers(this.data);
     }
 
-    public ProductItems getItemsList(int i) {
+    public ProductItems getItemsList(int i) {//returns the tiem in the vector at specific index
         return data.items.get(i);
     }
 
-    public void adminPage() {
-        data.adminFlag = true;
-        this.setChanged();
-        this.notifyObservers(this.data);
-    }
-
-    public void updateCart() {
+    public void updateCart() {//updates quantity amount of cart
         data.count = cart.getTotalQuantity();
         this.setChanged();
         this.notifyObservers(this.data);
     }
 
-    public void cartList() {
+    public void cartList() { //sets cart data
         data.cart = cart;
         this.setChanged();
         this.notifyObservers(this.data);
     }
 
-    public CartList getCart() {
+    public CartList getCart() {//returns cart
         return cart;
     }
 }

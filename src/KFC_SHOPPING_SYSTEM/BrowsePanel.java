@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package KFC_SHOPPING_SYSTEM;
 
 import java.awt.Color;
@@ -61,7 +57,7 @@ public class BrowsePanel extends JPanel {
         this.setLayout(null);
     }
 
-    public void categoryList(Vector<String> cList) {
+    public void categoryList(Vector<String> cList) {//when called, it fills a Jlist with a list of categories from the data
         chooseCategoryLabel.setFont(new Font("", Font.BOLD, 25));
         chooseCategoryLabel.setForeground(Color.BLACK);
         chooseCategoryLabel.setBounds(50, 5, 300, 50);
@@ -84,7 +80,7 @@ public class BrowsePanel extends JPanel {
         this.setVisible(true);
     }
 
-    public void itemsList(Vector<ProductItems> iList) {
+    public void itemsList(Vector<ProductItems> iList) {//when called fills table with items specified by the selected category
         model.setRowCount(0);
         model.setColumnCount(0);
         selectLabel.setFont(new Font("", Font.BOLD, 25));
@@ -133,7 +129,7 @@ public class BrowsePanel extends JPanel {
         this.setVisible(true);
     }
 
-    public void bucketCounter(int count) {
+    public void bucketCounter(int count) {//visual counter for user to see their cart quantity which is called when the count changes
         bucketLabel.setBounds(950, 300, 100, 100);
 
         itemNumText.setText(String.valueOf(count));
@@ -147,7 +143,7 @@ public class BrowsePanel extends JPanel {
         this.add(bucketLabel);
         this.setVisible(true);
     }
-
+//getters
     public JList getCategoryList() {
         return categoryList;
     }

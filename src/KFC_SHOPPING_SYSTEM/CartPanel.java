@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package KFC_SHOPPING_SYSTEM;
 
 import java.awt.Color;
@@ -35,7 +31,7 @@ public class CartPanel extends JPanel {
     private final JButton removeButton = new JButton("Remove Item");
     private final JButton checkoutButton = new JButton();
 
-    CartPanel() {
+    CartPanel() { //intialise Table and restrict user from access cells
         this.cartList = new JTable() {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -47,16 +43,35 @@ public class CartPanel extends JPanel {
         this.setLayout(null);
     }
 
-    public static void main(String[] args) {
-        BrowseView g = new BrowseView();
-        CartList cart = new CartList();
-
-        g.cart(cart);
-    }
-
-    public void cart(CartList cart) {
+    public void cart(CartList cart) { //updates cart list view with new data and allows user to edit that data
         model.setRowCount(0);
         model.setColumnCount(0);
+
+        setProperties();
+        grandTotal.setText("TOTAL                     " + cart.getUnitTotal());
+        checkoutButton.setText("Checkout              " + cart.getUnitTotal());
+
+        setPropertiesJCP();
+        Object rowData[] = new Object[4];
+        for (int i = 0; i < cart.getCartSize(); i++) {
+            rowData[0] = cart.getProduct(i).getItemName();
+            rowData[1] = cart.getItemQuantity(i);
+            rowData[2] = cart.getProduct(i).getItemPrice();
+            rowData[3] = cart.getSubTotal(i);
+            model.addRow(rowData);
+        }
+
+        this.add(checkoutButton);
+        this.add(grandTotal);
+        this.add(selectItem);
+        this.add(myBucketLabel);
+        this.add(plusButton);
+        this.add(minusButton);
+        this.add(removeButton);
+        this.add(cartListJCP);
+    }
+
+    public void setProperties() {//sets properties for components used in cartpanel
         myBucketLabel.setFont(new Font("", Font.BOLD, 25));
         myBucketLabel.setForeground(Color.BLACK);
         myBucketLabel.setBounds(50, 5, 300, 50);
@@ -65,11 +80,9 @@ public class CartPanel extends JPanel {
         selectItem.setForeground(Color.BLACK);
         selectItem.setBounds(50, 540, 300, 50);
 
-        grandTotal.setText("TOTAL                     " + cart.getUnitTotal());
         grandTotal.setForeground(Color.BLACK);
         grandTotal.setBounds(830, 160, 300, 300);
 
-        checkoutButton.setText("Checkout              " + cart.getUnitTotal());
         checkoutButton.setBackground(Color.DARK_GRAY);
         checkoutButton.setForeground(Color.WHITE);
         checkoutButton.setBounds(740, 350, 300, 60);
@@ -92,7 +105,9 @@ public class CartPanel extends JPanel {
         removeButton.setForeground(Color.WHITE);
         removeButton.setBounds(380, 550, 170, 30);
         removeButton.setEnabled(false);
+    }
 
+    public void setPropertiesJCP() { //sets properties for Table and JScrollPane to adhere to
         cartList.setModel(model);
         cartList.getTableHeader().setReorderingAllowed(false);
         cartList.getTableHeader().setEnabled(false);
@@ -100,14 +115,6 @@ public class CartPanel extends JPanel {
         model.addColumn("Quantity");
         model.addColumn("Unit Price");
         model.addColumn("Sub-Total");
-        Object rowData[] = new Object[4];
-        for (int i = 0; i < cart.getCartSize(); i++) {
-            rowData[0] = cart.getProduct(i).getItemName();
-            rowData[1] = cart.getItemQuantity(i);
-            rowData[2] = cart.getProduct(i).getItemPrice();
-            rowData[3] = cart.getSubTotal(i);
-            model.addRow(rowData);
-        }
         cartList.getColumnModel().getColumn(1).setMaxWidth(70);
         cartList.getColumnModel().getColumn(2).setMaxWidth(70);
         cartList.getColumnModel().getColumn(3).setMaxWidth(70);
@@ -125,17 +132,8 @@ public class CartPanel extends JPanel {
         cartListJCP.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
         cartListJCP.setBounds(50, 50, 500, 500);
-
-        this.add(checkoutButton);
-        this.add(grandTotal);
-        this.add(selectItem);
-        this.add(myBucketLabel);
-        this.add(plusButton);
-        this.add(minusButton);
-        this.add(removeButton);
-        this.add(cartListJCP);
     }
-
+//getters
     public JButton getPlusButton() {
         return plusButton;
     }

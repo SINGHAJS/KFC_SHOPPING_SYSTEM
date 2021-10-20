@@ -12,7 +12,6 @@ public class BrowseData {
 
     boolean browseFlag = false;
     boolean cartFlag = false;
-    boolean adminFlag = false;
     boolean itemListFlag = false;
     int count = 0;
     Vector<String> categories = new Vector<String>();

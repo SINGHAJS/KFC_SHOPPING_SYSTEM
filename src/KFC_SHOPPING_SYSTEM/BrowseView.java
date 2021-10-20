@@ -21,7 +21,7 @@ public class BrowseView extends JFrame implements Observer {
     private final BrowsePanel browsePanel;
     private final CartPanel cartPanel;
 
-    public BrowseView() {
+    public BrowseView() {//establishes frame and intializes the panels used 
         this.setSize(1200, 800);
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -34,7 +34,7 @@ public class BrowseView extends JFrame implements Observer {
         back();
     }
 
-    public void categoryList(Vector<String> clist) {
+    public void categoryList(Vector<String> clist) {//removes previous panel and shows the browsePanel with data being passed through panel method
         this.getContentPane().removeAll();
         this.back();
         getBrowsePanel().categoryList(clist);
@@ -44,7 +44,7 @@ public class BrowseView extends JFrame implements Observer {
         this.repaint();
     }
 
-    public void itemsList(Vector<ProductItems> ilist) {
+    public void itemsList(Vector<ProductItems> ilist) {//adds to panel with items list whose data is presented from panel method
         getBrowsePanel().itemsList(ilist);
         browsePanel.setVisible(true);
         this.add(getBrowsePanel());
@@ -52,7 +52,7 @@ public class BrowseView extends JFrame implements Observer {
         this.repaint();
     }
 
-    public void bucketCounter(int count) {
+    public void bucketCounter(int count) { //adds bucket label which uses its panel method which is added to frame
         getBrowsePanel().bucketCounter(count);
         this.add(getBrowsePanel());
         this.revalidate();
@@ -61,7 +61,7 @@ public class BrowseView extends JFrame implements Observer {
         this.repaint();
     }
 
-    public void cart(CartList cart) {
+    public void cart(CartList cart) { //removes previous panel and updates cartlist to be displayed to user
         this.getContentPane().removeAll();
         this.back();
         getCartPanel().cart(cart);
@@ -71,12 +71,12 @@ public class BrowseView extends JFrame implements Observer {
         this.repaint();
     }
 
-    public void back() {
+    public void back() {// setsup headerpanel for user to interact with
         getHeaderPanel().back();
         this.add(headPanel);
         this.repaint();
     }
-
+//all listeners for specific tasks to ping controller using user actions 
     public void addMouseListener(MouseListener mouseListener) {
         getHeaderPanel().getBrowseLabel().addMouseListener(mouseListener);
         getHeaderPanel().getcLabel().addMouseListener(mouseListener);
@@ -88,7 +88,6 @@ public class BrowseView extends JFrame implements Observer {
         getCartPanel().getPlusButton().addActionListener(actionListener);
         getCartPanel().getMinusButton().addActionListener(actionListener);
         getCartPanel().getRemoveButton().addActionListener(actionListener);
-
     }
 
     public void addListSelectionListener(ListSelectionListener selectionListener) {
@@ -98,7 +97,7 @@ public class BrowseView extends JFrame implements Observer {
     }
 
     @Override
-    public void update(Observable o, Object arg) {
+    public void update(Observable o, Object arg) { //updates panels and chooses the right panel to display using the flag and fills right data to each method
         BrowseData data = (BrowseData) arg;
         if (data.cartFlag) {
             this.browsePanel.setVisible(false);
@@ -116,7 +115,7 @@ public class BrowseView extends JFrame implements Observer {
             }
         }
     }
-
+//getters
     public BrowsePanel getBrowsePanel() {
         return browsePanel;
     }

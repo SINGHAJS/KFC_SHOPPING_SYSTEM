@@ -22,11 +22,11 @@ public class InventoryDB {
     private static ArrayList<String> list = new ArrayList<>();
     private static final String tableName = "INVENTORY";
 
-    public InventoryDB() {
+    public InventoryDB() {//connects to database
         this.db = new DBManager(URL);
     }
 
-    public void createItemsTable() {
+    public void createItemsTable() {//creates items table if there is no existing table
         try {
             if (!db.checkTable(tableName)) {
                 db.getStatement().executeUpdate("CREATE TABLE " + tableName + "(ID INT, "
@@ -39,14 +39,13 @@ public class InventoryDB {
         }
     }
 
-    public void fillTable() {
+    public void fillTable() {//fills table with data from file using file reader
         int count = 1;
         try {
             list = File_IO.readFile(KFC_MENU);
             for (String o : list) {
                 String[] itemInfo = o.split(",");
                 Double price = Double.parseDouble(itemInfo[2]);
-                //String sqlInsert = "INSERT INTO " + tableName + " VALUES (" + count++ + ",'" + itemInfo[0] + "','" + itemInfo[1] + "', " + price + ")";
                 String sqlInsert = "INSERT INTO " + tableName + " VALUES (?,?,?,?,?)";
                 PreparedStatement ps = this.db.getConnection().prepareStatement(sqlInsert);
                 ps.setInt(1, count ++);
@@ -55,7 +54,6 @@ public class InventoryDB {
                 ps.setDouble(4, price);
                 ps.setBoolean(5,true);
                 ps.executeUpdate();
-                //db.getStatement().executeUpdate(sqlInsert);
             }
             System.out.println("Table Filled");
         } catch (SQLException e) {
@@ -63,7 +61,7 @@ public class InventoryDB {
         }
     }
 
-    public Vector getCategory() {
+    public Vector getCategory() {//returns a vector of category columns values (including duplicates)
         ResultSet rs = null;
         Vector<String> category = new Vector<String>();
         try {
@@ -78,7 +76,7 @@ public class InventoryDB {
         return category;
     }
 
-    public Vector getItems(String categoryName) {
+    public Vector getItems(String categoryName) {//using the categroy input selects the items with same category and returns the list of items
         ResultSet rs = null;
         Vector<ProductItems> items = new Vector<ProductItems>();
         try {
@@ -94,7 +92,7 @@ public class InventoryDB {
         }
         return items;
     }
-    public void editItem(int id, boolean b){
+    public void editItem(int id, boolean b){//changes the availability of item using inputs
          try {
                 String sqlInsert = "UPDATE " + tableName + " SET AVAILABILITY = ? WHERE ID = ?";
                 PreparedStatement ps = this.db.getConnection().prepareStatement(sqlInsert);
@@ -107,7 +105,7 @@ public class InventoryDB {
         
     }
     
-    public Vector getEntireTable(){
+    public Vector getEntireTable(){ //returns a vector of entire table
         ResultSet rs = null;
         Vector<ProductItems> allItems = new Vector<ProductItems>();
          try {

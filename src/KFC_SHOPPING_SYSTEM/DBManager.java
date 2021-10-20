@@ -122,7 +122,7 @@ public class DBManager {
 
     /**
      *
-     * @param tableName
+     * @param tableName create Inventory Table
      */
     public void createInventoryTable(String tableName) {
         try {

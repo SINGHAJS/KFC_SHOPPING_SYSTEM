@@ -1,7 +1,6 @@
 package KFC_SHOPPING_SYSTEM;
 
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.Vector;
 
 /**
@@ -12,15 +11,14 @@ import java.util.Vector;
  */
 public class CartList extends Cart {
 
-    //ArrayList which can store multiple Product objects
+    //Vector which can store multiple Product objects
     private final Vector<ProductItems> viewCart = new Vector<>();
     private NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
 
     public CartList() {
 
     }
-
-    //Method to add into arraylist
+    //Method to add into vector
     @Override
     public void addItem(ProductItems o, double quantity) {
         if (this.viewCart.contains(o)) {
@@ -31,27 +29,27 @@ public class CartList extends Cart {
         }
     }
 
-    public Vector getCart() {
+    public Vector getCart() {//returns cart
         return this.viewCart;
     }
 
     @Override
-    public int getCartSize() {
+    public int getCartSize() {//returns cart size
         return this.viewCart.size();
     }
 
     @Override
-    public void removeItem(int index) {
+    public void removeItem(int index) {//removes item at specific index
         this.viewCart.remove(this.viewCart.get(index));
     }
 
     @Override
-    public ProductItems getProduct(int index) {
+    public ProductItems getProduct(int index) {//returns item at specific index
         return this.viewCart.get(index);
     }
 
     @Override
-    public String getUnitTotal() {
+    public String getUnitTotal() {//returns grand total of cart
         double unitTotal = 0.0;
         for (ProductItems o : this.viewCart) {
             unitTotal += o.getPrice() * o.getQuantity();
@@ -60,18 +58,18 @@ public class CartList extends Cart {
         return totalPrice;
     }
 
-    public String getSubTotal(int index) {
+    public String getSubTotal(int index) { //gets sub total for the selected item with the quantity amount
 
         String itemPrice = currencyFormat.format(this.viewCart.get(index).getPrice() * getItemQuantity(index));
         return itemPrice;
     }
 
     @Override
-    public void setCartQuantity(int index, double quantity) {
+    public void setCartQuantity(int index, double quantity) { //updates cart items quantity 
         this.viewCart.get(index).setQuantity(quantity);
     }
 
-    public int getTotalQuantity() {
+    public int getTotalQuantity() {//returns total quantity of all items in cart
         int totalQuantity = 0;
         for (ProductItems o : this.viewCart) {
             totalQuantity += o.getQuantity();
@@ -80,26 +78,7 @@ public class CartList extends Cart {
     }
 
     @Override
-    public double getItemQuantity(int index) {
+    public double getItemQuantity(int index) { //returns specific items quantity
         return this.viewCart.get(index).getQuantity();
-    }
-
-    public Vector<String> returnCartItems() {
-        Vector<String> itemNames = new Vector<String>();
-        int count = 1;
-        for (ProductItems o : this.viewCart) {
-            itemNames.add(String.format("\n%1s %-15s %18.2f %30.2f %30.2f", "[" + count++ + "]", o.getItemName(), o.getQuantity(), o.getPrice(), o.getPrice() * o.getQuantity()));
-        }
-        return itemNames;
-    }
-
-    @Override
-    public String toString() {
-        int count = 1;
-        String printer = "";
-        for (ProductItems o : this.viewCart) {
-            printer += String.format("\n%1s %-15s %18.2f %30.2f %30.2f", "[" + count++ + "]", o.getItemName(), o.getQuantity(), o.getPrice(), o.getPrice() * o.getQuantity());
-        }
-        return printer;
     }
 }

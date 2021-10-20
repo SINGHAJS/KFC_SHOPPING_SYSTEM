@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package KFC_SHOPPING_SYSTEM;
 
 import java.awt.Color;
@@ -28,7 +24,7 @@ public class HeaderPanel extends JPanel {
         this.setLayout(null);
     }
 
-    public void back() {
+    public void back() { //adds labels to headerPanel for user to interact with
         getBrowseLabel().setFont(new Font("", Font.BOLD, 20));
         getBrowseLabel().setForeground(Color.WHITE);
         getBrowseLabel().setBounds(400, 0, 200, 30);
@@ -50,7 +46,7 @@ public class HeaderPanel extends JPanel {
         this.add(getBrowseLabel());
         this.add(getBackLabel());
     }
-
+//getters
     public JLabel getBackLabel() {
         return backLabel;
     }

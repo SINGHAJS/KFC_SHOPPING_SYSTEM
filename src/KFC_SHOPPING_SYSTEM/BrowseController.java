@@ -29,7 +29,7 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) { //button actions for user to edit items
         String command = e.getActionCommand();
         int cartListRow = this.view.getCartPanel().getCartList().getSelectedRow();
         int itemListRow = this.view.getBrowsePanel().getItemsList().getSelectedRow();   
@@ -58,7 +58,7 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
     }
 
     @Override
-    public void valueChanged(ListSelectionEvent ex) {
+    public void valueChanged(ListSelectionEvent ex) {//gets selected value and sends data to model and updates view
         Object o = ex.getSource();
         if (ex.getValueIsAdjusting()) {
             if (o.equals(this.view.getBrowsePanel().getCategoryList())) {
@@ -82,7 +82,7 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mouseClicked(MouseEvent e) {//mouse lisetener for switching panels and frames
         Object o = e.getSource();
         if (o.equals(this.view.getHeaderPanel().getBrowseLabel())) {
             System.out.println("switching panel to browse");
@@ -97,10 +97,9 @@ public class BrowseController implements ActionListener, MouseListener, ListSele
             }
         } else if (o.equals(this.view.getHeaderPanel().getBackLabel())) {
             System.out.println("Switching back");
-            this.model.adminPage();
         }
     }
-
+//abstract methods for mouselistener required but not used
     @Override
     public void mousePressed(MouseEvent e) {
     }
