@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 /**
  *
  * @author Ajit Singh ID: 19070642
+ * @author Rohit Singh ID: 17981754
+ *
  */
 public class SystemController implements ActionListener {
 
@@ -13,8 +15,7 @@ public class SystemController implements ActionListener {
     private LoginView aLoginPageView;
     private FAQPageView aFAQView;
     private RegistrationView aRegView;
-    private ManagerView aMgrView;
-    //private HomeView aHomeView;
+    private ManagerView aMgrView;    
     private BrowseView aBrowseView;
     private BrowseModel aBrowseModel;
     private BrowseController controller;
@@ -51,9 +52,7 @@ public class SystemController implements ActionListener {
         this.aBrowseView = aBrowseView;
         this.aBrowseModel = new BrowseModel();
         this.controller = new BrowseController(this.aBrowseModel,this.aBrowseView);
-        aBrowseModel.addObserver(aBrowseView);
-        //this.aHomeView.addActionListener(this);
-
+        aBrowseModel.addObserver(aBrowseView);        
     }
 
     /**

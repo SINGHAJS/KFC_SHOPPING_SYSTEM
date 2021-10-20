@@ -38,7 +38,7 @@ public class DBManager {
 
     /**
      *
-     * @param URL
+     * @param URL     
      */
     public DBManager(String URL) {
         this.establishConnection(URL);
@@ -75,8 +75,7 @@ public class DBManager {
     /**
      *
      * @param tableName
-     * @return flag
-     *
+     * @return flag     
      */
     public boolean checkTable(String tableName) {
         boolean flag = false;
@@ -122,7 +121,7 @@ public class DBManager {
 
     /**
      *
-     * @param tableName
+     * @param tableName creates inventory table
      */
     public void createInventoryTable(String tableName) {
         try {

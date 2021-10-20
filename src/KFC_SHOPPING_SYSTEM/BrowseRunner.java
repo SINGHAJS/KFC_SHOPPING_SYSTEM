@@ -2,7 +2,8 @@ package KFC_SHOPPING_SYSTEM;
 
 /**
  *
- * @author singh
+ * @author Ajit_Singh ID: 19070642
+ * @author Rohit_Singh ID:17981754
  */
 public class BrowseRunner {
 
