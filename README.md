@@ -1,16 +1,18 @@
 # KFC_SHOPPING_SYSTEM
-ENSE600/COMP603 - Project 2 (SHOPPING SYSTEM)
+(SHOPPING SYSTEM)
+A Shopping System Desktop Application which performs login, registration, FAQ and add/remove items from cart operations.
 
 --------------STUDENTS------------------
-    NAME: AJIT SINGH        ID: 19070642
-    NAME: ROHIT SINGH       ID: 17981754
+    NAME: Ajit Singh        ID: 19070642
+    NAME: Rohit Singh       ID: 17981754
 
 ------------DEFAULT USERS---------------
-MANAGER 
+Manager Login
     USERNAME: Manager
     PASSWORD: Manager12345
 
-CUSTOMER
+Customer Login
     USERNAME: pdc
-    PASSWORD: Password12345
+    PASSWORD: Password12345  
+    
 ----------------------------------------
